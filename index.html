@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <title>Network Monitoring | Elliot Forbes</title>
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/js/c3.css">
+        <script src="assets/js/d3.min.js"></script>
+        <script src="assets/js/c3.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="topnav">
+            <ul class="nav">
+                <li>Network Monitoring</li>
+            </ul>
+        </div>
+        
+        <div class="content">
+            <div class="row">
+               <div class="col-md-12">
+                   <div class="status-bar"></div>
+               </div>
+                <div class="col-md-6">
+                    <div class="content-box">
+                        <h2>Pis on the Network</h2>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>IP Address</td>
+                                    <td>Lease Time</td>
+                                    <td>Last Updated</td>
+                                    <td>Connected</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>192.168.1.104</td>
+                                    <td>25</td>
+                                    <td>12:08:49 11/11/11</td>
+                                    <td>Online</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>192.168.1.122</td>
+                                    <td>25</td>
+                                    <td>12:08:49 11/11/11</td>
+                                    <td>Online</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>192.168.1.108</td>
+                                    <td>25</td>
+                                    <td>12:08:49 11/11/11</td>
+                                    <td>Offline</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h2>Throughput Test Results</h2>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h2>Download/Upload Test Results</h2>
+                        
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-box">
+                       <h2>Network Traffic Percentages</h2>
+                        <div id="chart"></div>
+                    </div>
+                    <div class="content-box">
+                        <h2>About:</h2>
+                        <p>This was developed as part of a 4th Year Computer Science project which looks to test distinct elements of a network and report back to a user in real-time. 
+                        This Project was built using a combination of the following:
+                        <ul>
+                            <li>Angular.js</li>
+                            <li>C3.js + D3.js</li>
+                            <li>Python</li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <script src="chart.js"></script>
+    </body>
+</html>

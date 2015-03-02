@@ -1,0 +1,84 @@
+
+@background-color: #fff;
+@cont-color: #fff;
+@border-color: #fff;
+@light-blue: #069;
+@save-border: #08c;
+@delete-color: #d9534f;
+@delete-border: #d9534f;
+
+@import "header.less";
+
+body{
+	background-color: @background-color;
+	margin: 0;
+	padding: 0;
+}
+
+
+.container{
+	padding: 50px;
+	margin-top: 20px;
+	border: 1px solid @border-color;
+	background-color: @cont-color;
+}
+
+.form-horizontal label{
+	text-align: left !important;
+	font-weight: normal !important;
+}
+
+.title-input input{
+	height: 49px;
+padding: 6px 10px;
+font-size: 24px;
+line-height: 1.33;
+border-radius: 3px;
+color: #004a80;
+font-weight: 200;
+margin-bottom: 10px;
+}
+
+.save{
+	color: @light-blue;
+border-color: @save-border;
+}
+
+.delete{
+	color: @delete-color;
+	border-color: @delete-border;
+}
+
+.toolbar{
+	margin-bottom: 40px;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 20px;
+}
+
+.btn-toolbar{
+	margin-top: 20px;
+}
+
+.form-heading{
+	color: #004a80;
+font-weight: 200;
+margin-bottom: 20px;
+margin-top: 20px;
+position: relative;
+padding-top: 0;
+padding-left: 0;
+}
+
+.additionalFeats{
+	padding-top: 40px;
+	border-top: 1px solid #eee;
+}
+
+table{
+	max-width: 100%;
+}
+
+table td{
+	max-width: 100px;
+	overflow: hidden;
+}
