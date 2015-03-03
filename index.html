@@ -6,9 +6,10 @@
         <link rel="stylesheet" href="assets/js/c3.css">
         <script src="assets/js/d3.min.js"></script>
         <script src="assets/js/c3.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body ng-app="">
         <div class="topnav">
             <ul class="nav">
                 <li>Network Monitoring</li>
@@ -20,9 +21,12 @@
                <div class="col-md-12">
                    <div class="status-bar">Script Status: <span class="green">Online</span></div>
                </div>
-                <div class="col-md-6">
+                <div ng-controller="raspberryController" class="col-md-6">
                     <div class="content-box">
                         <h2>Pis on the Network</h2>
+                        <div>
+                            <div data-chart data-value="value"></div>
+                        </div>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -34,26 +38,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>192.168.1.104</td>
-                                    <td>25</td>
-                                    <td>12:08:49 11/11/11</td>
-                                    <td>Online</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>192.168.1.122</td>
-                                    <td>25</td>
-                                    <td>12:08:49 11/11/11</td>
-                                    <td>Online</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>192.168.1.108</td>
-                                    <td>25</td>
-                                    <td>12:08:49 11/11/11</td>
-                                    <td>Offline</td>
+                                <tr ng-repeat="x in names">
+                                    <td>{{ x.a }}</td>
+                                    <td>{{ x.b }}</td>
+                                    <td>{{ x.c }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -103,6 +91,63 @@
             </div>
 
         </div>
+        <script>
+//            var ItemListController = function ($scope, $http, $timeout) {
+//
+//              $scope.items = [];
+//
+//              var retrieveItems = function () {
+//                // get a list of items from the api located at '/api/items'
+//                $http.get('dbConn.php')
+//                  .success(function (items) {
+//                    $scope.items = items;
+//
+//                    // check for item changes
+//                    $timeout(retrieveItems, 5000);
+//                  }
+//                );
+//              };
+//
+//            
+//            };
+//            var myApp = angular.module('myApp', []);
+//
+//            myApp.controller('Ctrl1', function($scope, $http, $timeout) {
+//               $scope.value = 1;
+//                $http.get("dbConn.php")
+//                            .success(function(response) {$scope.names = response;});  
+//                var poll = function() {
+//                    $timeout(function() {
+//                        $scope.value+=1;
+//                        $scope.names = $http.get("dbConn.php")
+//                            .success(function(response) {$scope.names = response;});  
+//                        poll();
+//                    }, 1000);
+//                };     
+//               poll();
+//            });
+//
+//            myApp.directive('chart', function() {
+//                return {
+//                    restrict: 'A',
+//                    scope : {
+//                        value : '='  // '=' indicates 2 way binding
+//                    },
+//                    template : "<div> value : {{value}} </div>"
+//                };
+//            });
+            function raspberryController($scope, $http, $timeout) {
+                var poll = function() {
+                    $timeout(function() {
+                        $http.get("dbConn.php")
+                            .success(function(response) {$scope.names = response;});  
+                        poll();
+                    }, 1000);
+                }
+                poll();
+            }
+            
+        </script>
         <script src="chart.js"></script>
     </body>
 </html>
