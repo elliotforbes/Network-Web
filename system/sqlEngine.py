@@ -119,11 +119,11 @@ class sqlEngine():
             sys.exit(1)
     
 sql = sqlEngine()
-#sql.dropDiscoveredTable()
+sql.dropDiscoveredTable()
 
 #sql.conn()
-#sql.createDiscoveredTable()
-#sql.insertPi("192.168.1.104", 1)
+sql.createDiscoveredTable()
+sql.insertPi("192.168.1.104", 1)
 sql.selectAll()
 #sql.updatePi(1,1,1)
 #sql.removePi()
