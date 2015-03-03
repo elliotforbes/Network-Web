@@ -1,11 +1,8 @@
 <?php
 //$db = new SQLite3('system/modules/test.db');
 
-try{
-    $dbh = new PDO('sqlite:/system/test.db');
-} catch (PDOException $e) {
-    echo 'Connection failed: ' . $e->getMessage();
-}
+$dbh = new PDO('sqlite:system/test.db') or die("cannot open db" . );
+
 $query = 'SELECT * FROM connected;';
 
 
