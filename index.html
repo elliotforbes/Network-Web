@@ -99,8 +99,8 @@
                         try{
                                 $http.get("dbConn.php")
                                 .success(function(response) {$scope.names = response;})
-                                .error(function() {
-                                    alert("An Unexpected Error!");
+                                .error(function(data, status, header, config) {
+                                    alert(status);
                                 });
                             } catch (e) {
                               console.log("Got an error!",e);
