@@ -96,8 +96,13 @@
             function raspberryController($scope, $http, $timeout) {
                 var poll = function() {
                     $timeout(function() {
-                        $http.get("dbConn.php")
-                            .success(function(response) {$scope.names = response;});  
+                        try{
+                            $http.get("/dbConn.php")
+                            .success(function(response) {$scope.names = response;});
+                            } catch (e) {
+                              console.log("Got an error!",e);
+                              throw e; // rethrow to not marked as handled
+                          }
                         poll();
                     }, 1000);
                 }
