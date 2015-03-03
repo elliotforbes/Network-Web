@@ -32,16 +32,16 @@
                                 <tr>
                                     <td>#</td>
                                     <td>IP Address</td>
-                                    <td>Lease Time</td>
-                                    <td>Last Updated</td>
                                     <td>Connected</td>
+                                    <td>Lease Time</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="x in names">
-                                    <td>{{ x.a }}</td>
-                                    <td>{{ x.b }}</td>
-                                    <td>{{ x.c }}</td>
+                                    <td>{{ x.ID }}</td>
+                                    <td>{{ x.IP }}</td>
+                                    <td>{{ x.CONNECTED }}</td>
+                                    <td>{{ x.LEASE_TIME }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -92,50 +92,7 @@
 
         </div>
         <script>
-//            var ItemListController = function ($scope, $http, $timeout) {
-//
-//              $scope.items = [];
-//
-//              var retrieveItems = function () {
-//                // get a list of items from the api located at '/api/items'
-//                $http.get('dbConn.php')
-//                  .success(function (items) {
-//                    $scope.items = items;
-//
-//                    // check for item changes
-//                    $timeout(retrieveItems, 5000);
-//                  }
-//                );
-//              };
-//
-//            
-//            };
-//            var myApp = angular.module('myApp', []);
-//
-//            myApp.controller('Ctrl1', function($scope, $http, $timeout) {
-//               $scope.value = 1;
-//                $http.get("dbConn.php")
-//                            .success(function(response) {$scope.names = response;});  
-//                var poll = function() {
-//                    $timeout(function() {
-//                        $scope.value+=1;
-//                        $scope.names = $http.get("dbConn.php")
-//                            .success(function(response) {$scope.names = response;});  
-//                        poll();
-//                    }, 1000);
-//                };     
-//               poll();
-//            });
-//
-//            myApp.directive('chart', function() {
-//                return {
-//                    restrict: 'A',
-//                    scope : {
-//                        value : '='  // '=' indicates 2 way binding
-//                    },
-//                    template : "<div> value : {{value}} </div>"
-//                };
-//            });
+
             function raspberryController($scope, $http, $timeout) {
                 var poll = function() {
                     $timeout(function() {
