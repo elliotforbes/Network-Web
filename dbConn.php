@@ -1,5 +1,6 @@
 <?php
 //$db = new SQLite3('system/modules/test.db');
+header("Access-Control-Allow-Origin: *"); 
 
 try{
 $dbh = new PDO('sqlite:system/test.db') or die("cannot open db");
