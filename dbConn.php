@@ -8,7 +8,7 @@ try{
 
 $query = 'SELECT * FROM connected;';
 
-$results = $dbh->query('''SELECT * FROM connect;''');
+$results = $dbh->query('SELECT * FROM connect;');
 
 $outp = '[';
 foreach($dbh->query($query) as $row){
