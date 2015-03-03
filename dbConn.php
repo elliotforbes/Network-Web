@@ -1,7 +1,7 @@
 <?php
 //$db = new SQLite3('system/modules/test.db');
 
-$dbh = new PDO('sqlite:system/test.db') or die("cannot open db");
+$dbh = new PDO('sqlite:/system/test.db') or die("cannot open db");
 
 $query = 'SELECT * FROM connected;';
 
