@@ -80,7 +80,7 @@ class sqlEngine():
             con = lite.connect("test.db")
             
             con.execute('''INSERT INTO connected (ID,IP_ADDRESS,CONNECTED, LEASE_TIME) \
-      VALUES (1, '192.168.1.104', 1, 0)''');
+      VALUES (2, '192.168.1.122', 1, 0)''');
             
             con.commit()
         
@@ -119,10 +119,10 @@ class sqlEngine():
             sys.exit(1)
     
 sql = sqlEngine()
-sql.dropDiscoveredTable()
+#sql.dropDiscoveredTable()
 
 #sql.conn()
-sql.createDiscoveredTable()
+#sql.createDiscoveredTable()
 sql.insertPi("192.168.1.104", 1)
 sql.selectAll()
 #sql.updatePi(1,1,1)
