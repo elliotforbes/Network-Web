@@ -2,9 +2,7 @@
 //$db = new SQLite3('system/modules/test.db'); 
 header("Access-Control-Allow-Origin: *");
 
-try{
-    $db = new SQLite3('test.db');
-} catch(Exception $e) {echo $e->getMessage(); }
+$db = new SQLite3('test.db');
 
 $query = 'SELECT * FROM connected;';
 
