@@ -36,7 +36,8 @@ class sqlEngine():
             cur.execute('''CREATE TABLE connected
                         (ID INT PRIMARY KEY NOT NULL,
                          IP_ADDRESS VARCHAR(128) NOT NULL,
-                         CONNECTED INT NOT NULL);''')
+                         CONNECTED INT NOT NULL,
+                         LEASE_TIME INT NOT NULL);''')
             con.commit()
             print("Table Successfully Created")
         
@@ -124,6 +125,6 @@ sql = sqlEngine()
 #sql.createDiscoveredTable()
 #sql.insertPi("192.168.1.104", 1)
 sql.selectAll()
-sql.updatePi(1,1,1)
+#sql.updatePi(1,1,1)
 #sql.removePi()
 #sql.selectAll()
