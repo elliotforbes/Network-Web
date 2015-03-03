@@ -140,7 +140,7 @@
                 var poll = function() {
                     $timeout(function() {
                         try{
-                            $http.get("dbConn.php")
+                            $http.get("/dbConn.php")
                             .success(function(response) {$scope.names = response;});
                             } catch (e) {
                               console.log("Got an error!",e);
