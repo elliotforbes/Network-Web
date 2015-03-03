@@ -100,7 +100,7 @@
                                 $http.get("dbConn.php")
                                 .success(function(response) {$scope.names = response;})
                                 .error(function(data, status, header, config) {
-                                    alert(status);
+                                    console.log(alert, status, header, config);
                                 });
                             } catch (e) {
                               console.log("Got an error!",e);
