@@ -97,8 +97,11 @@
                 var poll = function() {
                     $timeout(function() {
                         try{
-                            $http.get("dbConn.php")
-                            .success(function(response) {$scope.names = response;});
+                            $http.getJSON("dbConn.php")
+                            .success(function(response) {$scope.names = response;})
+                            .error(function () {
+                                alert("An Unexpected Error!");
+                            });
                             } catch (e) {
                               console.log("Got an error!",e);
                               throw e; // rethrow to not marked as handled
