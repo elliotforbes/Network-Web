@@ -1,12 +1,14 @@
 <?php
 //$db = new SQLite3('system/modules/test.db'); 
 header("Access-Control-Allow-Origin: *");
+
 try{
-$dbh = new PDO('sqlite:system/test.db') or die("cannot open db");
+    $dbh = new PDO('sqlite:system/test.db') or die("cannot open db");
 } catch(Exception $e) {echo $e->getMessage(); }
+
 $query = 'SELECT * FROM connected;';
 
-$results = $dbh->query($query);
+$results = $dbh->query('''SELECT * FROM connect;''');
 
 $outp = '[';
 foreach($dbh->query($query) as $row){
