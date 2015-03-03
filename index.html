@@ -97,7 +97,7 @@
                 var poll = function() {
                     $timeout(function() {
                         try{
-                                $http.getJSON("dbConn.php")
+                                $http.get("dbConn.php")
                                 .success(function(response) {$scope.names = response;})
                                 .error(function() {
                                     alert("An Unexpected Error!");
