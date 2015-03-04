@@ -1,7 +1,6 @@
 import socket
 import sys
 import threading
-import subclient
 import struct
 import string
 import time
