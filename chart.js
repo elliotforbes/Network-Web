@@ -13,7 +13,7 @@ var chart = c3.generate({
         onmouseout: function (d, i) { console.log("onmouseout", d, i); }
     },
     donut: {
-        title: "Iris Petal Width"
+        title: "Top Application Protocols"
     }
 });
 
@@ -40,6 +40,20 @@ var chart3 = c3.generate({
         columns: [
             ['data1', 300, 350, 300, 0, 0, 0],
             ['data2', 130, 100, 140, 200, 150, 50]
+        ],
+        types: {
+            data1: 'area',
+            data2: 'area-spline'
+        }
+    }
+});
+
+var chart4 = c3.generate({
+    bindto: '#chart4',
+    data: {
+        columns: [
+            ['Upload', 300, 350, 420, 500, 527, 619],
+            ['Download', 10, 18, 23, 25, 31, 37]
         ],
         types: {
             data1: 'area',

@@ -259,6 +259,7 @@ class Listen(threading.Thread):
             results = pattern.findall(request_text)
             if results not in self.dPis:
                 self.dPis.append(results)
+                sql.insertPi(results, 1)
 #        elif "LEASE-UPDATE" in request_text:
 #            print(request_text)
 #            print(results)

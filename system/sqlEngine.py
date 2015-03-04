@@ -34,7 +34,7 @@ class sqlEngine():
             cur = con.cursor()
             
             cur.execute('''CREATE TABLE connected
-                        (ID INT PRIMARY KEY NOT NULL,
+                        (ID INTEGER PRIMARY KEY AUTOINCREMENT,
                          IP_ADDRESS VARCHAR(128) NOT NULL,
                          CONNECTED INT NOT NULL,
                          LEASE_TIME INT NOT NULL);''')
@@ -80,8 +80,13 @@ class sqlEngine():
         try:
             con = lite.connect("test.db")
             
-            con.execute('''INSERT INTO connected (ID,IP_ADDRESS,CONNECTED, LEASE_TIME) \
-      VALUES (2, '192.168.1.122', 1, 0)''');
+            query = "INSERT INTO connected (IP_ADDRESS,CONNECTED, LEASE_TIME)"
+            query += "VALUES ('"
+            query += IP_ADDRESS
+            query += "',1,0)"
+            print(query)
+            
+            con.execute(query);
             
             con.commit()
         
@@ -123,8 +128,8 @@ sql = sqlEngine()
 #sql.dropDiscoveredTable()
 
 #sql.conn()
-sql.createDiscoveredTable()
-sql.insertPi("192.168.1.104", 1)
+#sql.createDiscoveredTable()
+#sql.insertPi()
 sql.selectAll()
 #sql.updatePi(1,1,1)
 #sql.removePi()
