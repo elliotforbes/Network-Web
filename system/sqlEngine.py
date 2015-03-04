@@ -2,11 +2,11 @@ import sqlite3 as lite
 import sys
 
 
-def __init__(self):
+def __init__(s):
     print("SQLite Engine Started.")
 
 
-def conn(self):
+def conn():
     try:
         con = lite.connect("test.db")
         cur = con.cursor()
@@ -26,7 +26,7 @@ def conn(self):
         if con:
             con.close()
 
-def createDiscoveredTable(self):
+def createDiscoveredTable():
     try:
         con = lite.connect("test.db")
         cur = con.cursor()
@@ -43,7 +43,7 @@ def createDiscoveredTable(self):
         print("Error %s:" % e.args[0])
         sys.exit(1)
 
-def dropDiscoveredTable(self):
+def dropDiscoveredTable():
     try:
         con = lite.connect("test.db")
         cur = con.cursor()
@@ -55,7 +55,7 @@ def dropDiscoveredTable(self):
         print("Error %s:" % e.args[0])
         sys.exit(1)
 
-def selectAll(self):
+def selectAll():
     try:
         con = lite.connect("test.db")
         cur = con.cursor()
@@ -74,7 +74,7 @@ def selectAll(self):
         print("Error %s:" % e.args[0])
         sys.exit(1)
 
-def insertPi(self, IP_ADDRESS, CONNECTED):
+def insertPi(IP_ADDRESS, CONNECTED):
     try:
         con = lite.connect("test.db")
 
@@ -94,7 +94,7 @@ def insertPi(self, IP_ADDRESS, CONNECTED):
 
 
 
-def updatePi(self, ID, IP_ADDRESS, CONNECTED):
+def updatePi(ID, IP_ADDRESS, CONNECTED):
     try:
         print("DB Updated")
         if ID is not None:
@@ -109,7 +109,7 @@ def updatePi(self, ID, IP_ADDRESS, CONNECTED):
         print("Error %s:" % e.args[0])
         sys.exit(1)
 
-def removePi(self):
+def removePi():
     ID = int
     try:
         con = lite.connect("test.db")
