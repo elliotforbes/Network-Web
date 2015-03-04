@@ -90,6 +90,7 @@ def insertPi(IP_ADDRESS, CONNECTED):
 
     except lite.Error, e:
         print("Error %s:" % e.args[0])
+        e.printStackTrace()
         sys.exit(1)
 
 
@@ -109,7 +110,7 @@ def updatePi(ID, IP_ADDRESS, CONNECTED):
         print("Error %s:" % e.args[0])
         sys.exit(1)
 
-def removePi():
+def removePi(ID):
     ID = int
     try:
         con = lite.connect("test.db")
