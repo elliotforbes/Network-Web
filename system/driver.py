@@ -27,9 +27,9 @@ def main():
     listen.start()
     # Starts the Advertising Thread
     advertise.start()
-    while(advertised):
+#    while(advertised):
         # Starts the Control Thread
-        control.start()
+    control.start()
     
     while(1):
         if (control.is_alive()) is False:
