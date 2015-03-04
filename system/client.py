@@ -209,7 +209,7 @@ class Advertise(threading.Thread):
     def __init__(self, advertised):
         super(Advertise, self).__init__()
         self.advertised = advertised
-        sql.insertPi(IP_ADDRESS, 1)
+        sql.insertPi(self.IP_ADDRESS, 1)
         
     def quit(self):
         self.s.close()
