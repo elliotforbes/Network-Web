@@ -82,12 +82,12 @@ def insertPi(IP_ADDRESS, CONNECTED):
         query += "VALUES ('"
         query += IP_ADDRESS
         query += "',1,0)"
-        print(query)
+#        print(query)
 
         con.execute(query);
-
+    
         con.commit()
-
+    
     except lite.Error, e:
         print("Error %s:" % e.args[0])
         print(e)
