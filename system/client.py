@@ -201,16 +201,9 @@ class Advertise(threading.Thread):
              'IPNO: [%s]\r\n' % (IP_ADDRESS) + 
              'LEASE: 255\r\n' +
               '\r\n')
-        
-    LEASE_UPDATE = ('LEASE-UPDATE\r\n' +
-                'LEASE-TIME: %d\r\n' % (LEASE_TIME, ) +
-                'IP-NO: %s\r\n' % (IP_ADDRESS, ) +
-                '\r\n')
     
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
     sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
-    
-    advertised = False
     
     def __init__(self, advertised):
         super(Advertise, self).__init__()
@@ -222,11 +215,9 @@ class Advertise(threading.Thread):
 #        sys.exit()
     
     def run(self):
-        self.advertised = True
+#        self.advertised = True
         while(1):
-            self.sock.sendto(self.LEASE_UPDATE, (self.UDP_IP, self.UDP_PORT))
             self.sock.sendto(self.SSDP_REQUEST, (self.UDP_IP, self.UDP_PORT))
-            
             time.sleep(10)
 
         
