@@ -15,13 +15,13 @@ def main():
     
     # Starts the thread that constantly listens for new
     # additions to the network.
-    listen = client2.Listen(dPis)
+    listen = client.Listen(dPis)
     # Initializes the advertise thread
-    advertise = client2.Advertise(advertised)
+    advertise = client.Advertise(advertised)
     
-    control = client2.Control(dPis, advertised)
+    control = client.Control(dPis, advertised)
     
-    info = client2.InfoClass()
+    info = client.InfoClass()
     
     # Starts the Listening Thread
     listen.start()
