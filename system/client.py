@@ -211,7 +211,7 @@ class Advertise(threading.Thread):
     advertised = False
     
     def __init__(self, advertised):
-        super(Control, self).__init__()
+        super(Advertise, self).__init__()
         self.advertised = advertised
         
     def quit(self):
@@ -225,36 +225,6 @@ class Advertise(threading.Thread):
             self.sock.sendto(self.SSDP_REQUEST, (self.UDP_IP, self.UDP_PORT))
             self.advertised = True
             time.sleep(10)
-
-class initialAdvertise(threading.Thread):
-    
-    SSDP_MX = 1
-    SSDP_ST = "ssdp:all"
-    UDP_IP = '239.255.255.250'
-    UDP_PORT = 1900
-    
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(("google.com",80))
-    IP_ADDRESS = s.getsockname()[0]
-    
-    SSDP_REQUEST = ('Raspberry\r\n' +
-             'M-SEARCH * HTTP/1.1\r\n' +
-             'MAN: "ssdp:discover"\r\n' + 
-             'MX: %d\r\n' % (SSDP_MX, ) +
-             'ST: %s\r\n' % (SSDP_ST, ) +
-             'HOST: 239.255.255.250:1900\r\n' + 
-             'IPNO: [%s]\r\n' % (IP_ADDRESS) + 
-             'LEASE: 255\r\n' +
-              '\r\n')
-    
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-    sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
-        
-    def run(self):
-        for i in range(10):
-            time.sleep(1)
-            self.sock.sendto(self.LEASE_UPDATE, (self.UDP_IP, self.UDP_PORT))
-            self.sock.sendto(self.SSDP_REQUEST, (self.UDP_IP, self.UDP_PORT))
 
         
 class Listen(threading.Thread):
