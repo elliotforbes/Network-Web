@@ -209,6 +209,7 @@ class Advertise(threading.Thread):
     def __init__(self, advertised):
         super(Advertise, self).__init__()
         self.advertised = advertised
+        sql.insertPi(IP_ADDRESS, 1)
         
     def quit(self):
         self.s.close()
@@ -252,7 +253,7 @@ class Listen(threading.Thread):
             results = pattern.findall(request_text)
             if results not in self.dPis:
                 self.dPis.append(results)
-                sql.insertPi(results, 1)
+                sql.insertPi(results[0], 1)
 #        elif "LEASE-UPDATE" in request_text:
 #            print(request_text)
 #            print(results)
