@@ -60,10 +60,12 @@ class controlThread(threading.Thread):
 class Control(threading.Thread):
     
     dPis = []
+    advertised = False
     
-    def __init__(self, dPis):
+    def __init__(self, dPis, advertised):
         super(Control, self).__init__()
         self.dPis = dPis
+        self.advertised = advertised
     # The main desicion tree for the program.
     # Currently only accepts exact strings but might add some form of
     # leway.
