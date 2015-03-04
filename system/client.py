@@ -222,10 +222,11 @@ class Advertise(threading.Thread):
 #        sys.exit()
     
     def run(self):
+        self.advertised = True
         while(1):
             self.sock.sendto(self.LEASE_UPDATE, (self.UDP_IP, self.UDP_PORT))
             self.sock.sendto(self.SSDP_REQUEST, (self.UDP_IP, self.UDP_PORT))
-            self.advertised = True
+            
             time.sleep(10)
 
         
