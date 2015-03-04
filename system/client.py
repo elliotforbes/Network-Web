@@ -6,6 +6,7 @@ import string
 import time
 import re
 import speedtest as speed
+import sqlEngine as sql
 
 # Does the control thread control the advertising
 # Mutex type of lock? Check type of lock
@@ -215,10 +216,10 @@ class Advertise(threading.Thread):
 #        sys.exit()
     
     def run(self):
-#        self.advertised = True
         while(1):
-            self.sock.sendto(self.SSDP_REQUEST, (self.UDP_IP, self.UDP_PORT))
             time.sleep(10)
+            self.sock.sendto(self.SSDP_REQUEST, (self.UDP_IP, self.UDP_PORT))
+            
 
         
 class Listen(threading.Thread):
