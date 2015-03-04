@@ -90,7 +90,7 @@ def insertPi(IP_ADDRESS, CONNECTED):
 
     except lite.Error, e:
         print("Error %s:" % e.args[0])
-        e.printStackTrace()
+        print(e)
         sys.exit(1)
 
 
