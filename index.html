@@ -96,16 +96,11 @@
             function raspberryController($scope, $http, $timeout) {
                 var poll = function() {
                     $timeout(function() {
-                        try{
-                                $http.get("dbConn.php")
-                                .success(function(response) {$scope.names = response;})
-                                .error(function(data, status, header, config) {
-                                    console.log(alert, status, header, config);
-                                });
-                            } catch (e) {
-                              console.log("Got an error!",e);
-                              throw e; // rethrow to not marked as handled
-                          }
+                            $http.get("dbConn.php")
+                            .success(function(response) {$scope.names = response;})
+                            .error(function(data, status, header, config) {
+                                console.log(alert, status, header, config);
+                            });
                         poll();
                     }, 1000);
                 }

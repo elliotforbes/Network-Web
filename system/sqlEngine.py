@@ -68,6 +68,7 @@ class sqlEngine():
                 print(row[0])
                 print(row[1])
                 print(row[2])
+                print(row[3])
                 print("------------------\n")
             con.commit()
         
@@ -122,7 +123,7 @@ sql = sqlEngine()
 #sql.dropDiscoveredTable()
 
 #sql.conn()
-#sql.createDiscoveredTable()
+sql.createDiscoveredTable()
 sql.insertPi("192.168.1.104", 1)
 sql.selectAll()
 #sql.updatePi(1,1,1)
