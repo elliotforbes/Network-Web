@@ -63,7 +63,7 @@ def selectAll():
 
 def insertPi(IP_ADDRESS, CONNECTED):
     try:
-        con = lite.connect("test.db")
+        con = lite.connect("main.db")
 
         query = "INSERT INTO connected (IP_ADDRESS,CONNECTED, LEASE_TIME)"
         query += "VALUES ('"
