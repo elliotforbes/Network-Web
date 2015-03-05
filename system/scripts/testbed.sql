@@ -1,1 +1,1 @@
-SELECT * FROM connected;
+DELETE * FROM connected;

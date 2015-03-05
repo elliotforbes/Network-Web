@@ -14,9 +14,6 @@ def main():
 
     advertised = False
     
-    # creates a fresh instance of the main.db table
-    sql.dropDiscoveredTable()
-    
     # Starts the thread that constantly listens for new
     # additions to the network.
     listen = client.Listen(dPis)
