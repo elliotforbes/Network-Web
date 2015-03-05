@@ -85,6 +85,10 @@ class Control(threading.Thread):
     dPis = []
     advertised = False
     
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("google.com",80))
+    IP_ADDRESS = s.getsockname()[0]
+    
     def __init__(self, dPis, advertised):
         super(Control, self).__init__()
         self.dPis = dPis
@@ -185,9 +189,10 @@ class Control(threading.Thread):
     # file and then print out all corresponding IP Addresses as well their current
     # connection options
     def listDiscoveredPis(self):
-        print("List of Discovered Pis")
+        print("List of Available Pis")
         for pi in self.dPis:
-            print(pi)
+            if pi != IP_ADDRESS:
+                print(pi)
     
     # This shuts down the current control thread. Should this thread
     # be shut down then the driver class picks up on this and subsequently
