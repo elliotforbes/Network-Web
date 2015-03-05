@@ -19,7 +19,9 @@ try{
     }
     $outp .= ']';
     echo $outp;
-} catch(Exception $e) {echo $e->getMessage(); }
+} catch(Exception $e) {
+    echo $e->getMessage(); 
+}
 
 
 ?>

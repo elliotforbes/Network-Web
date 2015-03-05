@@ -34,6 +34,28 @@ import sqlEngine as sql
 
 # monitor on top of data
 
+
+# 
+# Potentially use a seperate pi as the "speedtest" style server.
+# 
+# Ensure that you are not fighting for a lock during a test so as to not
+# mess up the timing. 
+
+# Adding real time 
+
+# don't limit the amount of test results shown.
+
+# PRIORITIES
+
+# - Add local Speedtest server
+# - check functionality of the third data
+
+# Add phone updates for data allowances
+# Add functionality to see what application is using what
+
+# check feasibility of capturing packets and analysing 
+# check the legal feasibility. 
+# 
 class InfoClass():
     
     Discovered_Pis = []
@@ -253,6 +275,8 @@ class Listen(threading.Thread):
             results = pattern.findall(request_text)
             if results not in self.dPis:
                 self.dPis.append(results)
+                # Move this to another thread 
+                # ensure that no packets are missed.
                 sql.insertPi(results[0], 1)
 #        elif "LEASE-UPDATE" in request_text:
 #            print(request_text)

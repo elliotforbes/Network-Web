@@ -4,6 +4,7 @@ import thread
 from threading import Thread, Event
 import socket
 import sys
+from modules import sqlEngine as sql
 
 
 def main():
@@ -12,6 +13,9 @@ def main():
     dPis = []
 
     advertised = False
+    
+    # creates a fresh instance of the main.db table
+    sql.dropDiscoveredTable()
     
     # Starts the thread that constantly listens for new
     # additions to the network.

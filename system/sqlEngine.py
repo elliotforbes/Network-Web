@@ -2,47 +2,34 @@ import sqlite3 as lite
 import sys
 
 
-def __init__(s):
-    print("SQLite Engine Started.")
-
-
-def conn():
+def install():
     try:
-        con = lite.connect("test.db")
+        con = lite.connect("main.db")
         cur = con.cursor()
-        cur.execute('SELECT SQLITE_VERSION()')
-
-        data = cur.fetchone()
-
+        
+        connected = open('scripts/create/createConnected.sql', 'r').read()
+        data = open('scripts/create/createData.sql', 'r').read()
+        throughput = open('scripts/create/createThroughput.sql', 'r').read()
+        upload = open('scripts/create/createUpload.sql', 'r').read()
+        download = open('scripts/create/createDownload.sql', 'r').read()
+        
+        cur.execute(connected);
+        cur.execute(data);
+        cur.execute(throughput);
+        cur.execute(upload);
+        cur.execute(download);
+        
+        print("Successfully created tables.")
+        
         con.commit()
-        print("%s SQLite Version" % data)
+        
     except lite.Error, e:
-
-        print "Error %s:" % e.args[0]
+        print "Error shite %s:" % e.args[0]
         sys.exit(1)
 
-    finally:
-
-        if con:
-            con.close()
-
-def createDiscoveredTable():
-    try:
-        con = lite.connect("test.db")
-        cur = con.cursor()
-
-        cur.execute('''CREATE TABLE connected
-                    (ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                     IP_ADDRESS VARCHAR(128) NOT NULL,
-                     CONNECTED INT NOT NULL,
-                     LEASE_TIME INT NOT NULL);''')
-        con.commit()
-        print("Table Successfully Created")
-
-    except lite.Error, e:
-        print("Error %s:" % e.args[0])
         sys.exit(1)
 
+        
 def dropDiscoveredTable():
     try:
         con = lite.connect("test.db")
@@ -123,11 +110,9 @@ def removePi(ID):
         print("Error %s:" % e.args[0])
         sys.exit(1)
     
-#sql = sqlEngine()
-#sql.dropDiscoveredTable()
 
-#sql.conn()
-#sql.createDiscoveredTable()
+install()
+#sql.createDiscoveredTabl   e()
 #sql.insertPi()
 #sql.selectAll()
 #sql.updatePi(1,1,1)

@@ -21,7 +21,8 @@ var chart2 = c3.generate({
     bindto: '#chart2',
     data: {
       columns: [
-        ['ThroughPut', 190, 200, 195, 205, 185, 200]
+        ['ThroughPut - Pi 1', 200, 195, 205, 185, 200, 300],
+        ['ThroughPut - Pi 2', 190, 200, 195, 205, 185, 200]
       ],
       axes: {
         data2: 'y2' // ADD
