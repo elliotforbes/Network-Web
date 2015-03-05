@@ -191,7 +191,7 @@ class Control(threading.Thread):
     def listDiscoveredPis(self):
         print("List of Available Pis")
         for pi in self.dPis:
-            if pi != IP_ADDRESS:
+            if pi != self.IP_ADDRESS:
                 print(pi)
     
     # This shuts down the current control thread. Should this thread
