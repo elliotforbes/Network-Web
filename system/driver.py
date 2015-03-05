@@ -4,7 +4,7 @@ import thread
 from threading import Thread, Event
 import socket
 import sys
-from modules import sqlEngine as sql
+import sqlEngine as sql
 
 
 def main():
