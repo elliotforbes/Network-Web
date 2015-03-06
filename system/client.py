@@ -207,7 +207,8 @@ class Control(threading.Thread):
             
 class manageLeases(threading.Thread):
     
-    
+    def __init__(self):
+        super(manageLeases, self).__init__()
     
 
 class Advertise(threading.Thread):
