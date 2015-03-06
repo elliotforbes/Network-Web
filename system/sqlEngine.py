@@ -61,7 +61,7 @@ def selectAll():
         print("Error %s:" % e.args[0])
         sys.exit(1)
 
-def insertPi(IP_ADDRESS, CONNECTED):
+def insertPi(IP_ADDRESS, CONNECTED, CONNECTED_IP):
     try:
         con = lite.connect("main.db")
 
@@ -69,7 +69,7 @@ def insertPi(IP_ADDRESS, CONNECTED):
         query += "VALUES ('"
         query += IP_ADDRESS
         query += "', '"
-        query += "'NULL'"
+        query += CONNECTED_IP
         query += "',1,0)"
 #        print(query)
 
