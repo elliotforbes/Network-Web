@@ -252,7 +252,7 @@ class manageLeases(threading.Thread):
         while(1):
             for pi in self.dPis:
                 print(pi[0])
-                sql.updateLease(str(pi[0]), 2)
+                sql.updateLease(str(pi[0]), "2")
                 time.sleep(2)
                 
             
