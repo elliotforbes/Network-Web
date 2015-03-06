@@ -32,6 +32,9 @@ def main():
     
     test = client.testThread(connected, connect_IP, isServer)
     
+    lease = client.manageLeases(dPis)
+    
+    lease.start()
     
     # Starts the Listening Thread
     listen.start()

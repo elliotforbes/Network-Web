@@ -44,17 +44,18 @@ def dropDiscoveredTable():
 
 def selectAll():
     try:
-        con = lite.connect("test.db")
-        cur = con.cursor()
+        con = lite.connect("main.db")
 
-        cur.execute('''SELECT * FROM connected;''')
+        con.execute('''SELECT * FROM connected;''')
+        
         print("---------------------")
-        for row in cur:
+        for row in con:
             print(row[0])
             print(row[1])
             print(row[2])
             print(row[3])
             print("------------------\n")
+        con.close()
         con.commit()
 
     except lite.Error, e:
@@ -64,7 +65,7 @@ def selectAll():
 def insertPi(IP_ADDRESS, CONNECTED, CONNECTED_IP):
     try:
         con = lite.connect("main.db")
-
+        
         query = "INSERT INTO connected (IP_ADDRESS,CONNECTED, CONNECTED_IP, LEASE_TIME)"
         query += "VALUES ('"
         query += IP_ADDRESS
@@ -82,8 +83,29 @@ def insertPi(IP_ADDRESS, CONNECTED, CONNECTED_IP):
         print(e)
         sys.exit(1)
 
+def updateLease(IP, LEASE):
+    try:
+        con = lite.connect("main.db")
 
+        query = "UPDATE connected "
+        query += "SET LEASE_TIME = "
+        query += LEASE
+        query += " WHERE IP_ADDRESS = '"
+        query += IP
+        query += "';"
+        
+        print(query)
 
+#        con.execute('''UPDATE connected SET LEASE_TIME = 555 where ID = 1;''');
+        con.execute(query)
+        con.commit()
+    
+    except lite.Error, e:
+        print("Error %s:" % e.args[0])
+        print(e)
+        sys.exit(1)
+
+        
 def updatePi(ID, IP_ADDRESS, CONNECTED):
     try:
         print("DB Updated")

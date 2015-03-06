@@ -241,10 +241,19 @@ class Control(threading.Thread):
             
 class manageLeases(threading.Thread):
     
-    def __init__(self):
-        super(manageLeases, self).__init__()
+    dPis = []
     
-
+    def __init__(self, dPis):
+        super(manageLeases, self).__init__()
+        self.dPis = dPis
+        
+    def setLeases(self):
+        for pi in self.dPis:
+            for i in range(20):
+                sql.updateLease(pi, str(i))
+                time.sleep(2)
+                
+            
 class Advertise(threading.Thread):
     
     
@@ -321,7 +330,8 @@ class Listen(threading.Thread):
                 self.dPis.append(results)
                 # Move this to another thread 
                 # ensure that no packets are missed.
-                sql.insertPi(results[0], 1, '')
+                sql.insertPi(results[0], 1, '' )
+        elif "
 #        elif "LEASE-UPDATE" in request_text:
 #            print(request_text)
 #            print(results)
