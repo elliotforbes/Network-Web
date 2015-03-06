@@ -4,7 +4,7 @@ header("Access-Control-Allow-Origin: *");
 
 try{
      $dbh = new PDO('sqlite:../system/main.db') or die('cannot open db');
-    $query = 'SELECT * FROM connected;';
+    $query = 'SELECT * FROM connected > 0;';
     $results = $dbh->query($query);
 
     $outp = '[';
