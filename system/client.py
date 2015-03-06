@@ -245,7 +245,7 @@ class manageLeases(threading.Thread):
     
     def __init__(self, dPis):
         super(manageLeases, self).__init__()
-        print("Lease Manager Started.
+        print("Lease Manager Started.")
         self.dPis = dPis
         
     def run(self):
