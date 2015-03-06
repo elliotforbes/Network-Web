@@ -278,7 +278,7 @@ class Advertise(threading.Thread):
              'ST: %s\r\n' % (SSDP_ST, ) +
              'HOST: 239.255.255.250:1900\r\n' + 
              'IPNO: [%s]\r\n' % (IP_ADDRESS) + 
-             'LEASE: 255\r\n' +
+             'LEASE: &100&\r\n' +
               '\r\n')
     
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
@@ -330,14 +330,16 @@ class Listen(threading.Thread):
     def getIPAddress(self, request_text):
         if "Raspberry" in request_text:
             pattern = re.compile(r'(?<=\[)(.*?)(?=\])', flags = re.DOTALL)
+            leaseTime = re.compile(r'(?<=\&)(.*?)(?=&])', flags = re.DOTALL)
+            lease = leaseTime.findall(request_text)
             results = pattern.findall(request_text)
             if results not in self.dPis:
                 self.dPis.append(results)
                 # Move this to another thread 
                 # ensure that no packets are missed.
-                sql.insertPi(results[0], 1, '' )
-        elif "Control" in request_text:
-            print("Control Message Received")
+                sql.insertPi(results[0], 1, lease[0] )
+        elif "PiControl" in request_text:
+            print("PiControl Message Received")
 #        elif "LEASE-UPDATE" in request_text:
 #            print(request_text)
 #            print(results)

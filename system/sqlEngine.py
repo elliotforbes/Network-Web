@@ -62,7 +62,7 @@ def selectAll():
         print("Error %s:" % e.args[0])
         sys.exit(1)
 
-def insertPi(IP_ADDRESS, CONNECTED, CONNECTED_IP):
+def insertPi(IP_ADDRESS, CONNECTED, LEASE_TIME):
     try:
         con = lite.connect("main.db")
         
@@ -70,7 +70,7 @@ def insertPi(IP_ADDRESS, CONNECTED, CONNECTED_IP):
         query += "VALUES ('"
         query += IP_ADDRESS
         query += "', 1, '"
-        query += CONNECTED_IP
+        query += LEASE_TIME
         query += "',0)"
 #        print(query)
 
@@ -88,7 +88,7 @@ def updateLease(IP, LEASE):
         con = lite.connect("main.db")
 
         query = "UPDATE connected "
-        query += "SET LEASE_TIME = "
+        query += "SET LEASE_TIME = LEASE_TIME - "
         query += LEASE
         query += " WHERE IP_ADDRESS = '"
         query += IP
