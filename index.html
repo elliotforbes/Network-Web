@@ -1,4 +1,4 @@
-<html>
+<html ng-app="">
     <head>
         <title>Network Monitoring | Elliot Forbes</title>
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -9,7 +9,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body ng-app="">
+    <body>
         <div class="topnav">
             <ul class="nav">
                 <li>Network Monitoring</li>
@@ -47,7 +47,7 @@
                         </table>
                     </div>
                     
-                    <div class="content-box" ng-controller="throughputController">
+                    <div class="content-box">
                         <h2>Throughput Test Results</h2>
                         <br/>
                         <div id="throughput"></div>
@@ -96,7 +96,6 @@
             </div>
 
         </div>
-        <script></script>
         <script src="chart.js"></script>
         <script src="assets/js/angularControllers.js"></script>
     </body>
