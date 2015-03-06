@@ -114,7 +114,7 @@ def removePi(ID):
     
 
 
-dropDiscoveredTable()
+#dropDiscoveredTable()
 install()
 #sql.createDiscoveredTabl   e()
 #sql.insertPi()
