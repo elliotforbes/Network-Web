@@ -184,7 +184,6 @@ class Control(threading.Thread):
                 print 'K/sec.'
             break
                 
-
     # This will have a look at the global variable Discovered_Pis in the driver.py
     # file and then print out all corresponding IP Addresses as well their current
     # connection options
@@ -205,6 +204,11 @@ class Control(threading.Thread):
         while(1):
             var = raw_input("-> ")
             self.parseControl(var)
+            
+class manageLeases(threading.Thread):
+    
+    
+    
 
 class Advertise(threading.Thread):
     
