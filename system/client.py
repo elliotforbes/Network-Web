@@ -337,6 +337,9 @@ class Listen(threading.Thread):
                 # Move this to another thread 
                 # ensure that no packets are missed.
                 sql.insertPi(results[0], 1, lease[0] )
+            elif:
+                sql.equalsLease(results[0], "255")
+                
         elif "PiControl" in request_text:
             print("PiControl Message Received")
 #        elif "LEASE-UPDATE" in request_text:

@@ -83,6 +83,8 @@ def insertPi(IP_ADDRESS, CONNECTED, LEASE_TIME):
         print(e)
         sys.exit(1)
 
+        
+        
 def updateLease(IP, LEASE):
     try:
         con = lite.connect("main.db")
@@ -105,6 +107,27 @@ def updateLease(IP, LEASE):
         print(e)
         sys.exit(1)
 
+def equalsLease(IP, LEASE):
+    try:
+        con = lite.connect("main.db")
+
+        query = "UPDATE connected "
+        query += "SET LEASE_TIME = "
+        query += LEASE
+        query += " WHERE IP_ADDRESS = '"
+        query += IP
+        query += "';"
+        
+        print(query)
+
+#        con.execute('''UPDATE connected SET LEASE_TIME = 555 where ID = 1;''');
+        con.execute(query)
+        con.commit()
+    
+    except lite.Error, e:
+        print("Error %s:" % e.args[0])
+        print(e)
+        sys.exit(1)
         
 def updatePi(ID, IP_ADDRESS, CONNECTED):
     try:
