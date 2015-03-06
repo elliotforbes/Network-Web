@@ -252,8 +252,8 @@ class manageLeases(threading.Thread):
         while(1):
             for pi in self.dPis:
                 print(pi[0])
-                sql.updateLease(str(pi[0]), "2")
-                time.sleep(2)
+                sql.updateLease(str(pi[0]), "5")
+                time.sleep(1)
                 
             
 class Advertise(threading.Thread):
@@ -338,7 +338,7 @@ class Listen(threading.Thread):
                 # ensure that no packets are missed.
                 sql.insertPi(results[0], 1, lease[0] )
             elif results in self.dPis:
-                sql.equalsLease(results[0], "255")
+                sql.equalsLease(results[0], "100")
                 
         elif "PiControl" in request_text:
             print("PiControl Message Received")
