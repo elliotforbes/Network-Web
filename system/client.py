@@ -331,7 +331,8 @@ class Listen(threading.Thread):
                 # Move this to another thread 
                 # ensure that no packets are missed.
                 sql.insertPi(results[0], 1, '' )
-        elif "
+        elif "Control" in request_text:
+            print("Control Message Received")
 #        elif "LEASE-UPDATE" in request_text:
 #            print(request_text)
 #            print(results)
