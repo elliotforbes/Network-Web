@@ -66,7 +66,7 @@ def insertPi(IP_ADDRESS, CONNECTED, LEASE_TIME):
     try:
         con = lite.connect("main.db")
         
-        query = "INSERT INTO connected (IP_ADDRESS,CONNECTED, CONNECTED_IP, LEASE_TIME)"
+        query = "INSERT INTO connected (IP_ADDRESS,CONNECTED, LEASE_TIME)"
         query += "VALUES ('"
         query += IP_ADDRESS
         query += "', 1, '"
