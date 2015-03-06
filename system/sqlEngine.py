@@ -96,7 +96,7 @@ def updateLease(IP, LEASE):
         query += IP
         query += "';"
         
-        print(query)
+#        print(query)
 
 #        con.execute('''UPDATE connected SET LEASE_TIME = 555 where ID = 1;''');
         con.execute(query)
@@ -118,7 +118,7 @@ def equalsLease(IP, LEASE):
         query += IP
         query += "';"
         
-        print(query)
+#        print(query)
 
 #        con.execute('''UPDATE connected SET LEASE_TIME = 555 where ID = 1;''');
         con.execute(query)
