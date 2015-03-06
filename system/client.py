@@ -214,6 +214,9 @@ class Control(threading.Thread):
     
     def setConnect(self, str):
         self.connect_IP = str
+        
+    def getCOnnectIP(self):
+        print(self.connect_IP)
 #    def testServer(self):
 #        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #        s.bind(('0.0.0.0', 8105))
