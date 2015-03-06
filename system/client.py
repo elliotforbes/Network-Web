@@ -251,10 +251,9 @@ class manageLeases(threading.Thread):
     def run(self):
         while(1):
             for pi in self.dPis:
-                for i in range(20):
-                    print(pi[0])
-                    sql.updateLease(str(pi[0]), str(i))
-                    time.sleep(2)
+                print(pi[0])
+                sql.updateLease(str(pi[0]), 2)
+                time.sleep(2)
                 
             
 class Advertise(threading.Thread):
