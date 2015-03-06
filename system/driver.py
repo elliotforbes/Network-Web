@@ -14,15 +14,23 @@ def main():
 
     advertised = False
     
+    connect_IP = ''
+    isServer = 1
+    connected = False
+    
     # Starts the thread that constantly listens for new
     # additions to the network.
     listen = client.Listen(dPis)
     # Initializes the advertise thread
     advertise = client.Advertise(advertised)
     
-    control = client.Control(dPis, advertised)
+    control = client.Control(dPis, advertised, connect_IP)
+    
+    control.getConnectIP()
     
     info = client.InfoClass()
+    
+    test = client.testThread(ssconnected, connect_IP, isServer)
     
     # Starts the Listening Thread
     listen.start()

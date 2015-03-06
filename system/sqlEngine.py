@@ -68,6 +68,8 @@ def insertPi(IP_ADDRESS, CONNECTED):
         query = "INSERT INTO connected (IP_ADDRESS,CONNECTED, LEASE_TIME)"
         query += "VALUES ('"
         query += IP_ADDRESS
+        query += "', '"
+        query += "'NULL'"
         query += "',1,0)"
 #        print(query)
 
