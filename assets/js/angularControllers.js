@@ -3,7 +3,7 @@ var app = angular.module("myApp", []);
 app.controller("raspberryController", function($scope, $http, $timeout){
     var poll = function() {
         $timeout(function() {
-                $http.get("results/connectedPis.php")
+                $http.get("../../results/connectedPis.php")
                 .success(function(response) {$scope.pis = response;})
                 .error(function(data, status, header, config) {
                     console.log(alert, status, header, config);
