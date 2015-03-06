@@ -30,7 +30,8 @@ def main():
     
     info = client.InfoClass()
     
-    test = client.testThread(ssconnected, connect_IP, isServer)
+    test = client.testThread(connected, connect_IP, isServer)
+    
     
     # Starts the Listening Thread
     listen.start()
