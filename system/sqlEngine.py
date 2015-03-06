@@ -19,7 +19,7 @@ def install():
         cur.execute(upload);
         cur.execute(download);
         
-        print("Successfully created tables.")
+        print("SQLEngine Started.")
         
         con.commit()
         

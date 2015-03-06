@@ -37,7 +37,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="x in names">
+                                <tr ng-repeat="x in pis">
                                     <td>{{ x.ID }}</td>
                                     <td>{{ x.IP }}</td>
                                     <td>{{ x.CONNECTED }}</td>
@@ -47,10 +47,10 @@
                         </table>
                     </div>
                     
-                    <div class="content-box">
+                    <div class="content-box" ng-controller="throughputController">
                         <h2>Throughput Test Results</h2>
                         <br/>
-                        <div id="chart2"></div>
+                        <div id="throughput"></div>
                     </div>
                     
                     <div class="content-box">
@@ -73,7 +73,7 @@
                     <div class="content-box">
                        <h2>Network Traffic Percentages</h2>
                        <br/>
-                        <div id="chart"></div>
+                        <div id="networkStats"></div>
                     </div>
                     
                     <div class="content-box">
@@ -96,23 +96,7 @@
             </div>
 
         </div>
-        <script>
-
-            function raspberryController($scope, $http, $timeout) {
-                var poll = function() {
-                    $timeout(function() {
-                            $http.get("dbConn.php")
-                            .success(function(response) {$scope.names = response;})
-                            .error(function(data, status, header, config) {
-                                console.log(alert, status, header, config);
-                            });
-                        poll();
-                    }, 1000);
-                }
-                poll();
-            }
-            
-        </script>
         <script src="chart.js"></script>
+        <script src="assets/js/angularControllers.js"></script>
     </body>
 </html>

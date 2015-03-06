@@ -1,4 +1,5 @@
 var chart = c3.generate({
+    bindto: '#networkStats',
     data: {
         columns: [
             ['SSDP', 30],
@@ -18,7 +19,7 @@ var chart = c3.generate({
 });
 
 var chart2 = c3.generate({
-    bindto: '#chart2',
+    bindto: '#throughput',
     data: {
       columns: [
         ['ThroughPut - Pi 1', 200, 195, 205, 185, 200, 300],
