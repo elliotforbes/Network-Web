@@ -71,11 +71,11 @@ def insertPi(IP_ADDRESS, CONNECTED, LEASE_TIME):
         query += IP_ADDRESS
         query += "', 1, '"
         query += LEASE_TIME
-        query += "') "
-        query += "WHERE NOT EXISTS( SELECT * FROM connected WHERE"
-        query += " IP_ADDRESS = '"
-        query += IP_ADDRESS
-        query += "' );"
+        query += "') ;"
+#        query += " WHERE NOT EXISTS ( SELECT * FROM connected WHERE"
+#        query += " IP_ADDRESS = '"
+#        query += IP_ADDRESS
+#        query += "' );"
 #        print(query)
 
         con.execute(query);
