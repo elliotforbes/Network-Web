@@ -71,7 +71,7 @@ def insertPi(IP_ADDRESS, CONNECTED, LEASE_TIME):
         query += IP_ADDRESS
         query += "', 1, '"
         query += LEASE_TIME
-        query += "',0)"
+        query += "');"
 #        print(query)
 
         con.execute(query);
