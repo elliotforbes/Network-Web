@@ -217,59 +217,7 @@ class Control(threading.Thread):
         
     def getConnectIP(self):
         print(self.connect_IP)
-#    def testServer(self):
-#        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#        s.bind(('0.0.0.0', 8105))
-#        s.listen(1)
-#        print 'Server ready...'
-#        while 1:
-#            conn, (host, remoteport) = s.accept()
-#            while 1:
-#                data = conn.recv(10240)
-#                if not data:
-#                    break
-#                del data
-#            conn.send('OK\n')
-#            conn.close()
-#            print 'Done with', host, 'port', remoteport
-#            break
-#    
-#    # This will run the test on the network.
-#    def testClient(self, str):
-#        count = 100
-#        testdata = 'x' * (10240-1) + '\n'
-#        t1 = time.time()
-#        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#        t2 = time.time()
-#        s.connect((str, 8105))
-#        t3 = time.time()
-#        i = 0
-#        while(1):
-#            data = raw_input('Enter No. of Packets: ')
-#            args = string.split(data)
-#            try:
-#                count = int(args[0])
-#            except:
-#                count = None
-#                print "Error, you need to specify number of packets you want to send."
-#            if not data:
-#                pass
-#            else:
-#                while i < count:
-#                    i = i+1
-#                    s.send(testdata)
-#                s.shutdown(1) # Send EOF
-#                t4 = time.time()
-#                data = s.recv(10240)
-#                t5 = time.time()
-#                print data
-#                print 'Raw timers:', t1, t2, t3, t4, t5
-#                print 'Intervals:', t2-t1, t3-t2, t4-t3, t5-t4
-#                print 'Total:', t5-t1
-#                print 'Throughput:', round((10240*count*0.001) / (t5-t1), 3),
-#                print 'K/sec.'
-#            break
-#                
+        
     # This will have a look at the global variable Discovered_Pis in the driver.py
     # file and then print out all corresponding IP Addresses as well their current
     # connection options
@@ -373,7 +321,7 @@ class Listen(threading.Thread):
                 self.dPis.append(results)
                 # Move this to another thread 
                 # ensure that no packets are missed.
-                sql.insertPi(results[0], 1)
+                sql.insertPi(results[0], 1, '')
 #        elif "LEASE-UPDATE" in request_text:
 #            print(request_text)
 #            print(results)
