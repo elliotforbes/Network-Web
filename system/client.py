@@ -247,7 +247,7 @@ class manageLeases(threading.Thread):
         super(manageLeases, self).__init__()
         self.dPis = dPis
         
-    def setLeases(self):
+    def run(self):
         for pi in self.dPis:
             for i in range(20):
                 sql.updateLease(pi, str(i))

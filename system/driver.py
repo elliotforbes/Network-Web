@@ -26,13 +26,13 @@ def main():
     
     control = client.Control(dPis, advertised, connect_IP)
     
-    control.getConnectIP()
-    
     info = client.InfoClass()
     
     test = client.testThread(connected, connect_IP, isServer)
     
     lease = client.manageLeases(dPis)
+    
+    
     
     lease.start()
     
