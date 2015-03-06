@@ -329,7 +329,7 @@ class Listen(threading.Thread):
     def getIPAddress(self, request_text):
         if "Raspberry" in request_text:
             pattern = re.compile(r'(?<=\[)(.*?)(?=\])', flags = re.DOTALL)
-            leaseTime = re.compile(r'(?<=\&)(.*?)(?=&])', flags = re.DOTALL)
+            leaseTime = re.compile(r'(?<=\&)(.*?)(?=\&)', flags = re.DOTALL)
             lease = leaseTime.findall(request_text)
             results = pattern.findall(request_text)
             if results not in self.dPis:
