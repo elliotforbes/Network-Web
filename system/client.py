@@ -251,7 +251,7 @@ class manageLeases(threading.Thread):
     def run(self):
         while(1):
             for pi in self.dPis:
-                print(pi[0])
+#                print(pi[0])
                 sql.updateLease(str(pi[0]), "5")
                 time.sleep(1)
                 
