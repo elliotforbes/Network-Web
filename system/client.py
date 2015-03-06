@@ -245,13 +245,15 @@ class manageLeases(threading.Thread):
     
     def __init__(self, dPis):
         super(manageLeases, self).__init__()
+        print("Lease Manager Started.
         self.dPis = dPis
         
     def run(self):
         while(1):
             for pi in self.dPis:
                 for i in range(20):
-                    sql.updateLease(pi, str(i))
+                    print(pi)
+                    sql.updateLease(str(pi), str(i))
                     time.sleep(2)
                 
             
@@ -284,6 +286,7 @@ class Advertise(threading.Thread):
     
     def __init__(self, advertised):
         super(Advertise, self).__init__()
+        print("Advertising Thread Started")
         self.advertised = advertised
 #        sql.insertPi(self.IP_ADDRESS, 1)
         
@@ -316,6 +319,7 @@ class Listen(threading.Thread):
     
     def __init__(self, dPis):
         super(Listen, self).__init__()
+        print("Listen Thread Started")
         self.dPis = dPis
         
         
