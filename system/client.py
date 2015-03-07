@@ -227,6 +227,7 @@ class Control(threading.Thread):
     
     def setConnect(self, str):
         self.connect_IP = str
+        self.sendConnectMessage()
         
     def getConnectIP(self):
         print(self.connect_IP)
