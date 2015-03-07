@@ -93,11 +93,7 @@ class testThread(threading.Thread):
     def run(self):
         while(1):
             if self.connected:
-                if self.isServer == 1:
-                    self.testServer()
-                elif self.isServer == 0:
-                    self.testTarget(connect_IP)
-                
+                self.testServer()
                 
     def testServer(self):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
