@@ -214,39 +214,43 @@ class Control(threading.Thread):
             
         # This will run the test on the network.
     def testClient(self, str):
-        count = 100
-        testdata = 'x' * (10240-1) + '\n'
-        t1 = time.time()
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        t2 = time.time()
-        s.connect((str, 8105))
-        t3 = time.time()
-        i = 0
-        while(1):
-            data = raw_input('Enter No. of Packets: ')
-            args = string.split(data)
-            try:
-                count = int(args[0])
-            except:
-                count = None
-                print "Error, you need to specify number of packets you want to send."
-            if not data:
-                pass
-            else:
-                while i < count:
-                    i = i+1
-                    s.send(testdata)
-                s.shutdown(1) # Send EOF
-                t4 = time.time()
-                data = s.recv(10240)
-                t5 = time.time()
-                print data
-                print 'Raw timers:', t1, t2, t3, t4, t5
-                print 'Intervals:', t2-t1, t3-t2, t4-t3, t5-t4
-                print 'Total:', t5-t1
-                print 'Throughput:', round((10240*count*0.001) / (t5-t1), 3),
-                print 'K/sec.'
-            break
+        try:
+            count = 100
+            testdata = 'x' * (10240-1) + '\n'
+            t1 = time.time()
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            t2 = time.time()
+            s.connect((str, 8105))
+            t3 = time.time()
+            i = 0
+            while(1):
+                data = raw_input('Enter No. of Packets: ')
+                args = string.split(data)
+                try:
+                    count = int(args[0])
+                except:
+                    count = None
+                    print "Error, you need to specify number of packets you want to send."
+                if not data:
+                    pass
+                else:
+                    while i < count:
+                        i = i+1
+                        s.send(testdata)
+                    s.shutdown(1) # Send EOF
+                    t4 = time.time()
+                    data = s.recv(10240)
+                    t5 = time.time()
+                    print data
+                    print 'Raw timers:', t1, t2, t3, t4, t5
+                    print 'Intervals:', t2-t1, t3-t2, t4-t3, t5-t4
+                    print 'Total:', t5-t1
+                    print 'Throughput:', round((10240*count*0.001) / (t5-t1), 3),
+                    print 'K/sec.'
+                break
+        except:
+            print("Error %s:" % sys.exc_info()[0])
+            sys.exit(1)
 
     # Simple help manual
     def printHelp(self):
