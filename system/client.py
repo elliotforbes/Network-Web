@@ -247,7 +247,7 @@ class Control(threading.Thread):
                     print 'Total:', t5-t1
                     print 'Throughput:', round((10240*count*0.001) / (t5-t1), 3),
                     print 'K/sec.'
-                break
+                return
         except:
             print("Error %s:" % sys.exc_info()[0])
             sys.exit(1)
@@ -383,7 +383,6 @@ class Listen(threading.Thread):
         self.connect_IP = connect_IP
         self.connected = connected
         
-        
     def quit(self):
         self.sock.close()
 #        sys.exit()
@@ -408,9 +407,14 @@ class Listen(threading.Thread):
             results = pattern.findall(request_text)
             if self.connected: 
                 print("This Pi is already connected")
+                return
             else:
                 self.connect_IP = results[0]
                 self.connected = True
+                return
+        elif "Message" in request_text:
+            print("Message Received")
+            print(request_text)
         else:
             return
 #        elif "LEASE-UPDATE" in request_text:
