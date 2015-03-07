@@ -199,7 +199,7 @@ class Control(threading.Thread):
         elif args[0] == "list":
             self.listDiscoveredPis()
         elif args[0] == "UDPTest":
-            self.testClient(self.connect_IP)
+            self.testClient(args[1])
         elif args[0] == "connect":
             self.setConnect(args[1])
         elif args[0] == "speedtest":
