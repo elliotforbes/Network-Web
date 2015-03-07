@@ -162,6 +162,7 @@ class Control(threading.Thread):
     dPis = []
     advertised = False
     connected = False
+    
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("google.com",80))
     IP_ADDRESS = s.getsockname()[0]
@@ -209,6 +210,8 @@ class Control(threading.Thread):
             speed.speedtest()
         elif args[0] == "quit":
             self.quitGracefully()
+        else:
+            print("Invalid Command")
     
     def sendConnectMessage(self):
         self.sock.sendto(self.CON_REQUEST, (self.UDP_IP, self.UDP_PORT))
