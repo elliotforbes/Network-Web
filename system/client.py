@@ -92,10 +92,10 @@ class testThread(threading.Thread):
         
     def run(self):
         while(1):
-            if connected:
-                if isServer == 1:
+            if self.connected:
+                if self.isServer == 1:
                     self.testServer()
-                elif isServer == 0:
+                elif self.isServer == 0:
                     self.testTarget(connect_IP)
                 
                 
