@@ -34,6 +34,8 @@ def main():
     
     
     
+    test.start()
+    
     lease.start()
     
     # Starts the Listening Thread
