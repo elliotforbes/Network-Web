@@ -74,7 +74,7 @@ def insertPi(IP_ADDRESS, CONNECTED, LEASE_TIME):
         query = "INSERT INTO connected (IP_ADDRESS,CONNECTED, LEASE_TIME)"
         query += "VALUES ('"
         query += IP_ADDRESS
-        query += "', 1, '"e
+        query += "', 1, '"
         query += LEASE_TIME
         query += "') ;"
 #        query += " WHERE NOT EXISTS ( SELECT * FROM connected WHERE"
