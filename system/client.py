@@ -367,6 +367,7 @@ class Listen(threading.Thread):
                 print("This Pi is already connected")
             else:
                 self.connect_IP = results[0]
+                self.connected = True
 #        elif "LEASE-UPDATE" in request_text:
 #            print(request_text)
 #            print(results)

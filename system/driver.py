@@ -20,7 +20,7 @@ def main():
     
     # Starts the thread that constantly listens for new
     # additions to the network.
-    listen = client.Listen(dPis)
+    listen = client.Listen(dPis, connected, connect_IP)
     # Initializes the advertise thread
     advertise = client.Advertise(advertised)
     
