@@ -412,7 +412,7 @@ class Listen(threading.Thread):
                 self.connect_IP = results[0]
                 self.connected = True
         else:
-            continue
+            return
 #        elif "LEASE-UPDATE" in request_text:
 #            print(request_text)
 #            print(results)
