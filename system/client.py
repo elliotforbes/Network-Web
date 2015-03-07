@@ -169,6 +169,10 @@ class Control(threading.Thread):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
     sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
     
+    
+    UDP_IP = '239.255.255.250'
+    UDP_PORT = 1900
+    
     connect_IP = ''
     
     CON_REQUEST = ('PiControl\r\n' +
