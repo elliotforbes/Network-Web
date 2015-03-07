@@ -161,18 +161,27 @@ class Control(threading.Thread):
     
     dPis = []
     advertised = False
-    
+    connected = False
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("google.com",80))
     IP_ADDRESS = s.getsockname()[0]
     
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+    sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
+    
     connect_IP = ''
     
-    def __init__(self, dPis, advertised, connect_IP):
+    CON_REQUEST = ('PiControl\r\n' +
+             'IPNO: [%s]\r\n' % (IP_ADDRESS) + 
+             'CON_REQUEST: 1\r\n' +
+              '\r\n')
+    
+    def __init__(self, dPis, advertised,connected, connect_IP):
         super(Control, self).__init__()
         self.dPis = dPis
         self.advertised = advertised
         self.connect_IP = connect_IP
+        self.connected = connected
     # The main desicion tree for the program.
     # Currently only accepts exact strings but might add some form of
     # leway.
@@ -196,6 +205,10 @@ class Control(threading.Thread):
             speed.speedtest()
         elif args[0] == "quit":
             self.quitGracefully()
+    
+    def sendConnectMessage(self):
+        self.sock.sendto(self.CON_REQUEST, (self.UDP_IP, self.UDP_PORT))
+            
     
     # Simple help manual
     def printHelp(self):
@@ -238,6 +251,7 @@ class Control(threading.Thread):
         while(1):
             var = raw_input("-> ")
             self.parseControl(var)
+            
             
 class manageLeases(threading.Thread):
     
@@ -304,6 +318,9 @@ class Advertise(threading.Thread):
 class Listen(threading.Thread):
         
 #    global Discovered_Pis 
+
+    connected = False
+    connect_IP = ''
     
 
     MCAST_GRP = '239.255.255.250'
@@ -316,10 +333,12 @@ class Listen(threading.Thread):
 
     sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
     
-    def __init__(self, dPis):
+    def __init__(self, dPis, connected, connect_IP):
         super(Listen, self).__init__()
         print("Listen Thread Started")
         self.dPis = dPis
+        self.connect_IP = connect_IP
+        self.connected = connected
         
         
     def quit(self):
@@ -342,6 +361,12 @@ class Listen(threading.Thread):
                 
         elif "PiControl" in request_text:
             print("PiControl Message Received")
+            pattern = re.compile(r'(?<=\[)(.*?)(?=\])', flags = re.DOTALL)
+            results = pattern.findall(request_text)
+            if self.connected: 
+                print("This Pi is already connected")
+            else:
+                self.connect_IP = results[0]
 #        elif "LEASE-UPDATE" in request_text:
 #            print(request_text)
 #            print(results)

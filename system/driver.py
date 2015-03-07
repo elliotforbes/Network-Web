@@ -24,7 +24,7 @@ def main():
     # Initializes the advertise thread
     advertise = client.Advertise(advertised)
     
-    control = client.Control(dPis, advertised, connect_IP)
+    control = client.Control(dPis, advertised, connected,connect_IP)
     
     info = client.InfoClass()
     

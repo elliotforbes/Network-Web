@@ -36,12 +36,17 @@ def dropDiscoveredTable():
         cur = con.cursor()
 
         cur.execute('''DROP TABLE connected;''')
-
+        cur.execute('''DROP TABLE throughtputResults''')
+        cur.execute('''DROP TABLE downloadResults''')
+        cur.execute('''DROP TABLE uploadResults''')
+        cur.execute('''DROP TABLE dataResults''')
+        
         con.commit()
     except lite.Error, e:
         print("Error %s:" % e.args[0])
-        sys.exit(1)
-
+        sys.exit(1);
+        
+        
 def selectAll():
     try:
         con = lite.connect("main.db")
@@ -69,7 +74,7 @@ def insertPi(IP_ADDRESS, CONNECTED, LEASE_TIME):
         query = "INSERT INTO connected (IP_ADDRESS,CONNECTED, LEASE_TIME)"
         query += "VALUES ('"
         query += IP_ADDRESS
-        query += "', 1, '"
+        query += "', 1, '"e
         query += LEASE_TIME
         query += "') ;"
 #        query += " WHERE NOT EXISTS ( SELECT * FROM connected WHERE"
