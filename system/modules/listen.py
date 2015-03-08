@@ -1,5 +1,6 @@
 import threading
 import re
+import sqlEngine as sql
 
 class listen(threading.Thread):
     
@@ -26,9 +27,9 @@ class listen(threading.Thread):
                 self.dPis.append(results)
                 # Move this to another thread 
                 # ensure that no packets are missed.
-#                sql.insertPi(results[0], 1, lease[0])
-#            elif results in self.dPis:
-#                sql.equalsLease(results[0], "100")
+                sql.insertPi(results[0], 1, lease[0])
+            elif results in self.dPis:
+                sql.equalsLease(results[0], "100")
         elif "PiControl" in socketData:
             print("PiControl Message Received")
             pattern = re.compile(r'(?<=\[)(.*?)(?=\])', flags = re.DOTALL)
