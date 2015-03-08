@@ -44,7 +44,7 @@ class Driver(threading.Thread):
     def initThreads(self):
         self.listenThread = listen.listen(self.SSDP_SOCK, self.dPis)
         self.advertiseThread = advertise.advertise(self.TCP_SOCK, self.SSDP_REQUEST)
-        self.leaseThread = manageLeases.manageLeases()
+        self.leaseThread = manageLeases.manageLeases(self.dPis)
 #        self.controlThread = control.control(self.dPis, self.speedTest)
     
     def runThreads(self):
