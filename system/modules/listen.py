@@ -40,8 +40,8 @@ class listen(threading.Thread):
                 self.connect_IP = results[0]
                 self.isConnected = True
                 return
-        elif "Message" in socketData:
-            print("Message Received")
-            print(socketData)
-        else:
-            print(socketData)
+#        elif "Message" in socketData:
+#            print("Message Received")
+#            print(socketData)
+#        else:
+#            print(socketData)

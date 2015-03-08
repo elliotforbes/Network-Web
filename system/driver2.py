@@ -8,7 +8,7 @@ import struct
 import threading
 import sys
 import string
-
+from subprocess import call
 
 class Driver(threading.Thread):
     
@@ -79,6 +79,9 @@ class Driver(threading.Thread):
         sys.exit(1)
         
 if __name__ == "__main__":
+    
+    
+    call(["ls", "-l"])
     
     driver = Driver()
     
