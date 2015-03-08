@@ -4,7 +4,7 @@ from modules import control
 from modules import speedtest
 from modules import advertise
 from modules import sqlEngine as sql
-#from modules import manageLeases
+from modules import manageLeases
 import socket
 import struct
 import threading
