@@ -36,7 +36,6 @@ class Driver():
     # FUNCTIONS
     #
     def __init__(self):
-        super(Driver, self).__init__()
         self.initThreads()
         self.runThreads()
         sql.install()
