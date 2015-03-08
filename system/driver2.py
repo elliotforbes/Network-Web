@@ -70,6 +70,8 @@ class Driver(threading.Thread):
             control.listDiscoveredPis(self.dPis, self.IP_ADDRESS)
         elif controlVar == 6:
             control.testClient()
+        elif controlVar == 7:
+            control.listAllNetworkMachines()
             
     def speedtest(self):
         speedtest.speedtest()

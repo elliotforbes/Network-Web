@@ -1,6 +1,7 @@
 import threading
 import string
 from modules import speedtest
+import commands
 
 dPis = []
 speedTest = False
@@ -33,6 +34,8 @@ def parseControl(str):
         self.setConnect(args[1])
     elif args[0] == "speedtest":
         speedtest.speedTest = True
+    elif args[0] == "AllDevices":
+        return 8
     elif args[0] == "quit":
         self.quitGracefully()
     else:
@@ -101,6 +104,9 @@ def testClient(self, str):
             print 'Throughput:', round((10240*count*0.001) / (t5-t1), 3),
             print 'K/sec.'
         break
+        
+def listAllNetworkMachines():
+    print(commands.getstatusoutput('wc -l file'))
 
 def testServer(self):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
