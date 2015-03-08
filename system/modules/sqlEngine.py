@@ -169,7 +169,7 @@ def removePi(ID):
 
 
 #dropDiscoveredTable()
-install()
+#install()
 #sql.createDiscoveredTabl   e()
 #sql.insertPi()
 #sql.selectAll()
