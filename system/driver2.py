@@ -3,6 +3,7 @@ from modules import sockets
 from modules import control
 from modules import speedtest
 from modules import advertise
+from modules import sqlEngine as sql
 import socket
 import struct
 import threading
@@ -35,7 +36,8 @@ class Driver(threading.Thread):
     def __init__(self):
         super(Driver, self).__init__()
         self.initThreads()
-        self.runThreads()    
+        self.runThreads()
+        sql.install()
     
     def initThreads(self):
         self.listenThread = listen.listen(self.SSDP_SOCK, self.dPis)
