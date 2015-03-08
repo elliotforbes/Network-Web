@@ -12,7 +12,7 @@ import sys
 import string
 from subprocess import call
 
-class Driver(threading.Thread):
+class Driver():
     
     # GLOBAL VARIABLES
     isConnected = False
@@ -93,5 +93,5 @@ if __name__ == "__main__":
     
     driver = Driver()
     
-    driver.start()
+    driver.run()
     
