@@ -20,6 +20,7 @@ class Driver():
     speedTest = False
     IP_ADDRESS = sockets.getIPAddress()
     SSDP_REQUEST = sockets.returnSSDPRequest(IP_ADDRESS)
+    connected_IP = None
     
     # THREADS
     listenThread = None
@@ -77,6 +78,8 @@ class Driver():
             control.testClient()
         elif controlVar == 7:
             control.listAllNetworkMachines()
+        elif controlVar == 8:
+            control.connect(self.dPis, self.connected_IP)
             
     def speedtest(self):
         speedtest.speedtest()

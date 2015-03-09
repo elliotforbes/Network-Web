@@ -7,12 +7,16 @@ dPis = []
 speedTest = False
 
 
-# Basic command line interface.
-def run(self):
-    while(1):
-        var = raw_input("-> ")
-        self.parseControl(var)
-
+def connect(dPis, connected_IP):
+    if connected_IP is None:
+        if not dPis:
+            print("No Available Pis to Connect With")
+        else:
+            connected_IP = dPis[0]
+            print("Connected with: %s", connected_IP)
+    
+    
+        
 # The main desicion tree for the program.
 # Currently only accepts exact strings but might add some form of
 # leway.
