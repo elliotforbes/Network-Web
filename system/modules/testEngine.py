@@ -1,5 +1,5 @@
 from modules import sqlEngine as sql
-
+from modules import alertEngine as alert
 import threading
 import struct
 import sys
@@ -17,7 +17,8 @@ class testEngine(threading.Thread):
     def run(self):
         while(1):
             time.sleep(5)
-            self.testConnectivity()
+            if not (self.testConnectivity()):
+                alert.sendAlert()
     
     def testConnectivity(self):
         try:

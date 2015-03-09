@@ -5,6 +5,7 @@ from modules import speedtest
 from modules import advertise
 from modules import sqlEngine as sql
 from modules import manageLeases
+from modules import alertEngine as alert
 import socket
 import struct
 import threading
@@ -27,6 +28,7 @@ class Driver():
     controlThread = None
     advertiseThread = None
     leaseThread = None
+    alertThread = None
     
     # SOCKETS
     SSDP_SOCK = sockets.getSSDPSocket()
@@ -45,12 +47,14 @@ class Driver():
         self.listenThread = listen.listen(self.SSDP_SOCK, self.dPis)
         self.advertiseThread = advertise.advertise(self.TCP_SOCK, self.SSDP_REQUEST)
         self.leaseThread = manageLeases.manageLeases(self.dPis)
+#        self.alertThread = alert.alertEngine()
 #        self.controlThread = control.control(self.dPis, self.speedTest)
     
     def runThreads(self):
         self.listenThread.start()
         self.advertiseThread.start()
         self.leaseThread.start()
+#        self.alertThread.start()
 #        self.controlThread.start()
         
     def run(self):
