@@ -40,6 +40,10 @@ def parseControl(str):
         speedtest.speedTest = True
     elif args[0] == "AllDevices":
         return 8
+    elif args[0] == "Phone":
+        return 9
+    elif args[0] == "ListPhone":
+        return 10
     elif args[0] == "quit":
         self.quitGracefully()
     else:
@@ -108,7 +112,13 @@ def testClient(self, str):
             print 'Throughput:', round((10240*count*0.001) / (t5-t1), 3),
             print 'K/sec.'
         break
-        
+
+def getPhoneNumber(alertPhone):
+    while(1):
+        var = raw_input("Enter the Phone Number You wish to recieve alert messages")
+        args = string.split(data)
+        alertPhone = args[0]
+
 def listAllNetworkMachines():
     print(commands.getstatusoutput('wc -l file'))
 
