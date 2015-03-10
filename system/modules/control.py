@@ -116,7 +116,7 @@ def testClient(self, str):
 def getPhoneNumber(alertPhone):
     while(1):
         var = raw_input("Enter the Phone Number You wish to recieve alert messages")
-        args = string.split(data)
+        args = string.split(var)
         alertPhone = args[0]
 
 def listAllNetworkMachines():
