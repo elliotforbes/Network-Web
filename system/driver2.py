@@ -100,7 +100,7 @@ class Driver():
             # Prints phone number connected with the alert Engine
             print(self.alertPhone)
         elif controlVar == 11:
-            print(self.connected_IP)
+            print(self.listenThread.getPortNumber())
             control.testClient(self.SSDP_SOCK, self.listenThread.getPortNumber())
         elif controlVar == 12:
             print(self.listenThread.getPortNumber())

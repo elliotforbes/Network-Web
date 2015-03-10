@@ -93,6 +93,7 @@ def listDiscoveredPis(dPis, IP_ADDRESS):
             
 # This will run the test on the network.
 def testClient(str, port):
+    print(port)
     count = 100
     testdata = 'x' * (10240-1) + '\n'
     t1 = time.time()
