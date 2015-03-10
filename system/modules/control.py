@@ -146,7 +146,7 @@ def sendPortNumber(socket, sockPort):
     socket.sendto(CON_REQUEST, ("239.255.255.250", 1900))
     print("Control Message Sent")
 
-def testServer(connected_IP, ssdp_sock):
+def testServer(ssdp_sock, connected_IP):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind(('0.0.0.0', 0))
     sendPortNumber(ssdp_sock, s.getsockname()[1])
