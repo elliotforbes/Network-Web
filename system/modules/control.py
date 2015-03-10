@@ -89,7 +89,7 @@ def listDiscoveredPis(dPis, IP_ADDRESS):
             print(pi)
             
 # This will run the test on the network.
-def testClient(self, str):
+def testClient(str):
     count = 100
     testdata = 'x' * (10240-1) + '\n'
     t1 = time.time()

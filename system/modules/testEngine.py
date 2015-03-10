@@ -28,6 +28,7 @@ class testEngine(threading.Thread):
             if self.connected_IP:
                 self.testThroughput(self.connected_IP)
             if self.isConnected:
+                print("Setting up server")
                 self.setupThroughtputServer()
 #            if (sql.checkLastDownload() < 0.00):
 #                alert.sendDownloadAlert()
