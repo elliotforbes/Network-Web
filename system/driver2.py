@@ -90,7 +90,7 @@ class Driver():
         elif controlVar == 8:
             control.connect(self.dPis, self.connected_IP)
         elif controlVar == 9:
-            control.getPhoneNumber(self.alertPhone)
+            self.alertPhone = control.getPhoneNumber()
         elif controlVar == 10:
             print(self.alertPhone)
             

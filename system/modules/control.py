@@ -113,11 +113,12 @@ def testClient(self, str):
             print 'K/sec.'
         break
 
-def getPhoneNumber(alertPhone):
+def getPhoneNumber():
     while(1):
         var = raw_input("Enter the Phone Number You wish to recieve alert messages")
         args = string.split(var)
         alertPhone = args[0]
+        return alertPhone
         break
 
 def listAllNetworkMachines():
