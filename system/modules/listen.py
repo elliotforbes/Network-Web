@@ -51,12 +51,12 @@ class listen(threading.Thread):
                     print(self.IP_ADDRESS)
                     print(results[0])
                     print("Own IP Address")
-                else:
-                    print(self.IP_ADDRESS)
-                    print(results[0])
                     self.connect_IP = results[0]
                     self.isConnected = True
                     control.testServer(self.SSDP_SOCK, results[0])
+                else:
+                    print(self.IP_ADDRESS)
+                    print(results[0])
                     return
         elif "PiInfo" in socketData:
             pattern = re.compile(r'(?<=\[)(.*?)(?=\])', flags = re.DOTALL)
