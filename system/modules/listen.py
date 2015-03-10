@@ -47,7 +47,9 @@ class listen(threading.Thread):
                 print("This Pi is already connected")
                 return
             else:
-                if self.IP_ADDRESS not in results[0]:
+                if self.IP_ADDRESS in results[0]:
+                    print("Own IP Address")
+                else:
                     print(self.IP_ADDRESS)
                     print(results[0])
                     self.connect_IP = results[0]
