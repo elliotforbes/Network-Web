@@ -1,6 +1,7 @@
 import threading
 import re
 import sqlEngine as sql
+import control
 
 class listen(threading.Thread):
     
@@ -42,6 +43,7 @@ class listen(threading.Thread):
             else:
                 self.connect_IP = results[0]
                 self.isConnected = True
+                control.testServer()
                 return
 #        elif "Message" in socketData:
 #            print("Message Received")

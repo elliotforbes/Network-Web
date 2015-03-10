@@ -138,7 +138,7 @@ def getPhoneNumber():
 def listAllNetworkMachines():
     print(commands.getstatusoutput('wc -l file'))
 
-def testServer(self):
+def testServer():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind(('0.0.0.0', 8105))
     s.listen(1)
