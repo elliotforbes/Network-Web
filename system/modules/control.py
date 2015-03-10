@@ -44,8 +44,9 @@ def parseControl(str):
         return 5
     elif args[0] == "AllDevices":
         return 6
-    elif args[0] == "UDPTest":
-        self.testClient(args[1])
+#    elif args[0] == "UDPTest":
+#        test
+#        self.testClient(args[1])
     elif args[0] == "connect":
         return 7
     elif args[0] == "speedtest":
@@ -100,7 +101,7 @@ def testClient(host, port):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     t2 = time.time()
     print("Trying to connect to... ", host)
-    print("On Port..." , port)
+    print("On Port..." ,port)
     s.connect((str(host), int(port)))
     t3 = time.time()
     i = 0
