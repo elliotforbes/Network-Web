@@ -43,7 +43,8 @@ class listen(threading.Thread):
                 print("This Pi is already connected")
                 return
             else:
-                if (results[0] != self.IP_ADDRESS):
+                
+                if results[0] in self.IP_ADDRESS:
                     self.connect_IP = results[0]
                     self.isConnected = True
                     control.testServer()

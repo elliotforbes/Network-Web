@@ -8,7 +8,7 @@ AUTH_TOKEN = pwords.returnAuth()
 client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN) 
 
 
-def sendAlert(self):
+def sendAlert():
     client.messages.create(
         to="+447815497765", 
         from_="+441499377047", 
@@ -17,7 +17,7 @@ def sendAlert(self):
     print("Text Alert Successfully sent")
     
 
-def sendThroughputAlert(self):
+def sendThroughputAlert():
     client.messages.create(
         to="+447815497765",
         from_="+441499377047",
@@ -26,7 +26,7 @@ def sendThroughputAlert(self):
     print("Text Alert Successfully sent")
     
     
-def sentDownloadAlert(self):
+def sentDownloadAlert():
     client.messages.create(
         to="+447815497765",
         from_="+441499377047",
@@ -34,7 +34,7 @@ def sentDownloadAlert(self):
     )
     print("Text Alert Successfully sent")
     
-def senUploadAlert(self):
+def senUploadAlert():
     client.messages.create(
         to="+447815497765",
         from_="+441499377047",
