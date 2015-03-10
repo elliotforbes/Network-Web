@@ -19,7 +19,7 @@ def connect(dPis, connected_IP, socket):
     
 def sendConnectMsg(socket, connected_IP):
     CON_REQUEST = ('PiControl\r\n' +
-             'IPNO: [%s]\r\n' % (IP_ADDRESS) + 
+             'IPNO: [%s]\r\n' % (connected_IP) + 
              'CON_REQUEST: 1\r\n' +
               '\r\n')
     socket.sendto(CON_REQUEST, ("239.255.255.250", 1900))
