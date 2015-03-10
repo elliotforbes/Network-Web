@@ -44,7 +44,7 @@ class listen(threading.Thread):
                 return
             else:
                 
-                if results[0] in self.IP_ADDRESS:
+                if results[0] not in self.IP_ADDRESS:
                     self.connect_IP = results[0]
                     self.isConnected = True
                     control.testServer()
