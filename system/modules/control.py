@@ -37,7 +37,7 @@ def parseControl(str):
     elif args[0] == "UDPTest":
         self.testClient(args[1])
     elif args[0] == "connect":
-        connect(args[1])
+        connect()
     elif args[0] == "speedtest":
         speedtest.speedTest = True
     elif args[0] == "AllDevices":
