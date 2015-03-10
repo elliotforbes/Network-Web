@@ -8,12 +8,14 @@ class listen(threading.Thread):
     SSDP_SOCK = None
     dPis = None
     isConnected = None
+    IP_ADDRESS = None
     
-    def __init__(self, SSDP_SOCK, dPis, isConnected):
+    def __init__(self, SSDP_SOCK, dPis, isConnected, IP_ADDRESS):
         super(listen, self).__init__()
         self.SSDP_SOCK = SSDP_SOCK
         self.dPis = dPis
         self.isConnected = isConnected
+        self.IP_ADDRESS = IP_ADDRESS
         
     def run(self):
         while(1):
@@ -41,10 +43,11 @@ class listen(threading.Thread):
                 print("This Pi is already connected")
                 return
             else:
-                self.connect_IP = results[0]
-                self.isConnected = True
-                control.testServer()
-                return
+                if (results[0] != self.IP_ADDRESS):
+                    self.connect_IP = results[0]
+                    self.isConnected = True
+                    control.testServer()
+                    return
 #        elif "Message" in socketData:
 #            print("Message Received")
 #            print(socketData)

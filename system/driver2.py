@@ -48,7 +48,7 @@ class Driver():
         sql.install()
     
     def initThreads(self):
-        self.listenThread = listen.listen(self.SSDP_SOCK, self.dPis, self.isConnected)
+        self.listenThread = listen.listen(self.SSDP_SOCK, self.dPis, self.isConnected, self.IP_ADDRESS)
         self.advertiseThread = advertise.advertise(self.TCP_SOCK, self.SSDP_REQUEST)
         self.leaseThread = manageLeases.manageLeases(self.dPis)
         self.testThread = testEngine.testEngine(self.connected_IP, self.isConnected)
