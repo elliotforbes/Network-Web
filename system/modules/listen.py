@@ -48,6 +48,8 @@ class listen(threading.Thread):
                 return
             else:
                 if self.IP_ADDRESS not in results[0]:
+                    print(self.IP_ADDRESS)
+                    print(results[0])
                     self.connect_IP = results[0]
                     self.isConnected = True
                     control.testServer(self.SSDP_SOCK, results[0])
