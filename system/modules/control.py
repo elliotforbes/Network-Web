@@ -118,6 +118,7 @@ def getPhoneNumber(alertPhone):
         var = raw_input("Enter the Phone Number You wish to recieve alert messages")
         args = string.split(var)
         alertPhone = args[0]
+        break
 
 def listAllNetworkMachines():
     print(commands.getstatusoutput('wc -l file'))
