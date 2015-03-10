@@ -92,14 +92,14 @@ def listDiscoveredPis(dPis, IP_ADDRESS):
             print(pi)
             
 # This will run the test on the network.
-def testClient(str, port):
+def testClient(host, port):
     print(port)
     count = 100
     testdata = 'x' * (10240-1) + '\n'
     t1 = time.time()
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     t2 = time.time()
-    s.connect((str, int(port)))
+    s.connect((str(host), int(port)))
     t3 = time.time()
     i = 0
     while(1):
@@ -146,7 +146,7 @@ def sendPortNumber(socket, sockPort):
                  'CON_REQUEST: 1\r\n' +
                   '\r\n')
         socket.sendto(CON_REQUEST, ("239.255.255.250", 1900))
-        print("Control Message Sent")
+#        print("Control Message Sent")
     return
 
 def testServer(ssdp_sock, connected_IP):
