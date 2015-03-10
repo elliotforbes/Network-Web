@@ -7,16 +7,23 @@ dPis = []
 speedTest = False
 
 
-def connect(dPis, connected_IP):
+def connect(dPis, connected_IP, socket):
     if connected_IP is None:
         if not dPis:
             print("No Available Pis to Connect With")
         else:
             connected_IP = dPis[0]
+            sendConnectMsg(socket, connected_IP)
             print("Connected with: %s", connected_IP)
     
     
-        
+def sendConnectMsg(socket, connected_IP):
+    CON_REQUEST = ('PiControl\r\n' +
+             'IPNO: [%s]\r\n' % (IP_ADDRESS) + 
+             'CON_REQUEST: 1\r\n' +
+              '\r\n')
+    socket.sendto(CON_REQUEST, ("239.255.255.250", 1900))
+    print("Control Message Sent")
 # The main desicion tree for the program.
 # Currently only accepts exact strings but might add some form of
 # leway.

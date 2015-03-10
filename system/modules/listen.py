@@ -6,11 +6,13 @@ class listen(threading.Thread):
     
     SSDP_SOCK = None
     dPis = None
+    isConnected = None
     
-    def __init__(self, SSDP_SOCK, dPis):
+    def __init__(self, SSDP_SOCK, dPis, isConnected):
         super(listen, self).__init__()
         self.SSDP_SOCK = SSDP_SOCK
         self.dPis = dPis
+        self.isConnected = isConnected
         
     def run(self):
         while(1):

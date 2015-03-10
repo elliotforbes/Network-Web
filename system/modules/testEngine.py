@@ -25,6 +25,8 @@ class testEngine(threading.Thread):
                 alert.sendAlert()
             if self.connected_IP:
                 self.testThroughput(self.connected_IP)
+            if self.isConnected:
+                self.setupThroughtputServer()
 #            if (sql.checkLastDownload() < 0.00):
 #                alert.sendDownloadAlert()
 #            if (sql.checkLastUpload() < 1.00):
@@ -37,6 +39,24 @@ class testEngine(threading.Thread):
             return True
         except urllib2.URLError as err: pass
         return False
+    
+    
+    def setupThroughtputServer(self):
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind(('0.0.0.0', 8105))
+        s.listen(1)
+        print 'Server ready...'
+        while 1:
+            conn, (host, remoteport) = s.accept()
+            while 1:
+                data = conn.recv(10240)
+                if not data:
+                    break
+                del data
+            conn.send('OK\n')
+            conn.close()
+            print 'Done with', host, 'port', remoteport
+            break
     
     def testThroughput(self, str):
         count = 100
