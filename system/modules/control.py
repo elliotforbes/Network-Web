@@ -140,13 +140,14 @@ def listAllNetworkMachines():
     print(commands.getstatusoutput('wc -l file'))
 
 def sendPortNumber(socket, sockPort):
-    CON_REQUEST = ('PiInfo\r\n' +
-             'PORTNO: [%s]\r\n' % (sockPort) + 
-             'CON_REQUEST: 1\r\n' +
-              '\r\n')
-    socket.sendto(CON_REQUEST, ("239.255.255.250", 1900))
-    print("Control Message Sent")
-
+    for i in range(100):
+        CON_REQUEST = ('PiInfo\r\n' +
+                 'PORTNO: [%s]\r\n' % (sockPort) + 
+                 'CON_REQUEST: 1\r\n' +
+                  '\r\n')
+        socket.sendto(CON_REQUEST, ("239.255.255.250", 1900))
+        print("Control Message Sent")
+    return
 def testServer(ssdp_sock, connected_IP):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind(('0.0.0.0', 0))

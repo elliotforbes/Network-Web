@@ -56,7 +56,7 @@ class listen(threading.Thread):
             pattern = re.compile(r'(?<=\[)(.*?)(?=\])', flags = re.DOTALL)
             results = pattern.findall(socketData)
             self.portNumber = results[0]
-            print("PiInfo Stae: ", self.portNumber)
+            print("PiInfo State: ", self.portNumber)
 #        elif "Message" in socketData:
 #            print("Message Received")
 #            print(socketData)
