@@ -17,6 +17,7 @@ def connect(dPis, connected_IP, socket):
             connected_IP = dPis[0]
             sendConnectMsg(socket, connected_IP)
             print("Connected with: %s", connected_IP)
+            return connected_IP
     
     
 def sendConnectMsg(socket, connected_IP):

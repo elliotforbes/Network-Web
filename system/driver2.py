@@ -88,7 +88,7 @@ class Driver():
             device.returnDevices()
         elif controlVar == 7:
             # Connects the Pi to the first available Pi
-            control.connect(self.dPis, self.connected_IP, self.SSDP_SOCK)
+            self.connected_IP = control.connect(self.dPis, self.connected_IP, self.SSDP_SOCK)
         elif controlVar == 8:
             # Lists all machines on the local network
             control.listAllNetworkMachines()
