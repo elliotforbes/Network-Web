@@ -32,14 +32,15 @@ app.controller('GraphCtrl', function($scope, $http, $timeout){
     config.axis = {"y":{"label":{"text":"Number of items", "position":"outer-middle"}}};
     config.data.types={"data1":$scope.config.type1, "data2":$scope.config.type2};
     var counter = 70;
+    $scope.chart = c3.generate(config);
     
     var poll = function() {
         $timeout(function(){
             $scope.config.data1.concat(",");
             $scope.config.data1.concat(counter);
-            $scope.chart = c3.generate(config);
+            $scope.chart.load();
+            counter += 10;
         }, 1000);
-        counter += 10;
     }
     poll();
     

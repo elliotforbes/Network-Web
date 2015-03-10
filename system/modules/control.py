@@ -46,6 +46,8 @@ def parseControl(str):
         return 9
     elif args[0] == "ListPhone":
         return 10
+    elif args[0] == "Throughput":
+        return 11
     elif args[0] == "quit":
         self.quitGracefully()
     else:

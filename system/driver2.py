@@ -87,13 +87,20 @@ class Driver():
         elif controlVar == 6:
             device.returnDevices()
         elif controlVar == 7:
+            # Connects the Pi to the first available Pi
             control.connect(self.dPis, self.connected_IP)
         elif controlVar == 8:
+            # Lists all machines on the local network
             control.listAllNetworkMachines()
         elif controlVar == 9:
+            # get's the phone number for which you want alert
+            # messages sent
             self.alertPhone = control.getPhoneNumber()
         elif controlVar == 10:
+            # Prints phone number connected with the alert Engine
             print(self.alertPhone)
+        elif controlVar == 11:
+            control.testClient(self.connected_IP)
             
     def speedtest(self):
         speedtest.speedtest()

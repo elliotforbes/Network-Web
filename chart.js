@@ -1,31 +1,3 @@
-var graphApp = angular.module('graphApp', []);
-
-graphApp.controller('GraphCtrl', function($scope){
-    $scope.chart = null;
-    $scope.config = {};
-    $scope.config.data1="30,40,50,60";
-    $scope.config.data2="60,50,40,30";
-    
-    $scope.typeOptions=["line", "bar", "spline", "step"];
-    
-    $scope.config.type1 = $scope.typeOptions[0];
-    $scope.config.type2 = $scope.typeOptions[1];
-    
-    $scope.showGraph2 = function
-    
-    $scope.showGraph = function() {
-        var config = {}
-        config.bindto = '#testChart';
-        config.data = {};
-        config.data.json = {};
-        config.data.json.data1 = $scope.config.data1.split(",");
-        config.data.json.data2 = $scope.config.data2.split(",");
-        config.axis = {"y":{"label":{"text":"Number of items", "position":"outer-middle"}}};
-        config.data.types={"data1":$scope.config.type1,"data2":$scope.config.type2};
-        $scope.chart = c3.generate(config);
-    }
-    
-});
 
 var chart = c3.generate({
     bindto: '#networkStats',
