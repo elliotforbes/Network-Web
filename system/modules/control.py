@@ -3,6 +3,7 @@ import string
 from modules import speedtest
 import commands
 import time
+import socket
 
 dPis = []
 speedTest = False
