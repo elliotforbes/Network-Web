@@ -47,8 +47,7 @@ class listen(threading.Thread):
                 print("This Pi is already connected")
                 return
             else:
-                
-                if results[0] not in self.IP_ADDRESS:
+                if self.IP_ADDRESS not in results[0]:
                     self.connect_IP = results[0]
                     self.isConnected = True
                     control.testServer(self.SSDP_SOCK, results[0])
