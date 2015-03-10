@@ -9,7 +9,7 @@ import urllib2
 
 class testEngine(threading.Thread):
     
-    connected_IP = ""
+    connected_IP = None
     
     def __init__(self, connected_IP):
         super(testEngine, self).__init__()
@@ -22,7 +22,7 @@ class testEngine(threading.Thread):
             time.sleep(5)
             if not (self.testConnectivity()):
                 alert.sendAlert()
-            if self.connected_IP not None:
+            if self.connected_IP:
                 self.testThroughput(self.connected_IP)
             
     
