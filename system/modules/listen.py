@@ -51,7 +51,7 @@ class listen(threading.Thread):
                 if results[0] not in self.IP_ADDRESS:
                     self.connect_IP = results[0]
                     self.isConnected = True
-                    control.testServer(results[0])
+                    control.testServer(self.SSDP_SOCK, results[0])
                     return
         elif "PiInfo" in socketData:
             pattern = re.compile(r'(?<=\[)(.*?)(?=\])', flags = re.DOTALL)
