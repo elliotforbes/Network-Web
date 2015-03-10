@@ -98,7 +98,7 @@ def testClient(str):
     t1 = time.time()
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     t2 = time.time()
-    s.connect((str, 8105))
+    s.connect((str, 8110))
     t3 = time.time()
     i = 0
     while(1):
@@ -140,7 +140,7 @@ def listAllNetworkMachines():
 
 def testServer():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind(('0.0.0.0', 8105))
+    s.bind(('0.0.0.0', 8110))
     s.listen(1)
     print 'Server ready...'
     while 1:
