@@ -48,6 +48,8 @@ class listen(threading.Thread):
                 return
             else:
                 if self.IP_ADDRESS in results[0]:
+                    print(self.IP_ADDRESS)
+                    print(results[0])
                     print("Own IP Address")
                 else:
                     print(self.IP_ADDRESS)
