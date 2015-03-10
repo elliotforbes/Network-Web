@@ -25,6 +25,10 @@ class testEngine(threading.Thread):
                 alert.sendAlert()
             if self.connected_IP:
                 self.testThroughput(self.connected_IP)
+            if (sql.checkLastDownload() < 0.00):
+                alert.sendDownloadAlert()
+            if (sql.checkLastUpload() < 1.00):
+                alert.sendUploadAlert()
             
     
     def testConnectivity(self):
@@ -33,7 +37,6 @@ class testEngine(threading.Thread):
             return True
         except urllib2.URLError as err: pass
         return False
-    
     
     def testThroughput(self, str):
         count = 100
