@@ -40,7 +40,7 @@ class listen(threading.Thread):
             elif results in self.dPis:
                 sql.equalsLease(results[0], "100")
         elif "PiControl" in socketData:
-            print("PiControl Message Received")
+#            print("PiControl Message Received")
             pattern = re.compile(r'(?<=\[)(.*?)(?=\])', flags = re.DOTALL)
             results = pattern.findall(socketData)
             if self.isConnected: 
@@ -48,21 +48,21 @@ class listen(threading.Thread):
                 return
             else:
                 if self.IP_ADDRESS in results[0]:
-                    print(self.IP_ADDRESS)
-                    print(results[0])
-                    print("Own IP Address")
+#                    print(self.IP_ADDRESS)
+#                    print(results[0])
+                    print("Control Message Received")
                     self.connect_IP = results[0]
                     self.isConnected = True
                     control.testServer(self.SSDP_SOCK, results[0])
                 else:
-                    print(self.IP_ADDRESS)
-                    print(results[0])
+#                    print(self.IP_ADDRESS)
+#                    print(results[0])
                     return
         elif "PiInfo" in socketData:
             pattern = re.compile(r'(?<=\[)(.*?)(?=\])', flags = re.DOTALL)
             results = pattern.findall(socketData)
             self.portNumber = results[0]
-#            print("PiInfo State: ", self.portNumber)
+            print("PiInfo State: ", self.portNumber)
 #        elif "Message" in socketData:
 #            print("Message Received")
 #            print(socketData)
