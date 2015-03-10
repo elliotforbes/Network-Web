@@ -99,7 +99,7 @@ def testClient(str, port):
     t1 = time.time()
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     t2 = time.time()
-    s.connect((str, port))
+    s.connect((str, int(port)))
     t3 = time.time()
     i = 0
     while(1):
@@ -148,6 +148,7 @@ def sendPortNumber(socket, sockPort):
         socket.sendto(CON_REQUEST, ("239.255.255.250", 1900))
         print("Control Message Sent")
     return
+
 def testServer(ssdp_sock, connected_IP):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind(('0.0.0.0', 0))
