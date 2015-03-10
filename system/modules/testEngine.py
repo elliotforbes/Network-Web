@@ -11,11 +11,13 @@ import time
 class testEngine(threading.Thread):
     
     connected_IP = None
+    isConnected = None
     
-    def __init__(self, connected_IP):
+    def __init__(self, connected_IP, isConnected):
         super(testEngine, self).__init__()
         print("Test Engine Started")
         self.connected_IP = connected_IP
+        self.isConnected = isConnected
         
     
     def run(self):
