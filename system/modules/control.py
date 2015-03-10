@@ -92,13 +92,13 @@ def listDiscoveredPis(dPis, IP_ADDRESS):
             print(pi)
             
 # This will run the test on the network.
-def testClient(str):
+def testClient(str, port):
     count = 100
     testdata = 'x' * (10240-1) + '\n'
     t1 = time.time()
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     t2 = time.time()
-    s.connect((str, 0))
+    s.connect((str, port))
     t3 = time.time()
     i = 0
     while(1):
@@ -138,10 +138,19 @@ def getPhoneNumber():
 def listAllNetworkMachines():
     print(commands.getstatusoutput('wc -l file'))
 
-def testServer():
+def sendPortNumber(connected_IP, sockPort):
+    CON_REQUEST = ('PiInfo\r\n' +
+             'PORTNO: [%s]\r\n' % (sockPort) + 
+             'CON_REQUEST: 1\r\n' +
+              '\r\n')
+    socket.sendto(CON_REQUEST, ("239.255.255.250", 1900))
+    print("Control Message Sent")
+
+def testServer(connected_IP):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind(('', 0))
-    s.listen(1)
+    s.bind(('0.0.0.0', 0))
+    sendPortNumber(connected_IP, s.getsockname()[1])
+    s.listen(5)
     print 'Server ready...'
     while 1:
         conn, (host, remoteport) = s.accept()

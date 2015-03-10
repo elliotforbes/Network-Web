@@ -9,6 +9,7 @@ class listen(threading.Thread):
     dPis = None
     isConnected = None
     IP_ADDRESS = None
+    portNumber = None
     
     def __init__(self, SSDP_SOCK, dPis, isConnected, IP_ADDRESS):
         super(listen, self).__init__()
@@ -21,7 +22,10 @@ class listen(threading.Thread):
         while(1):
             sock_data = self.SSDP_SOCK.recv(10240)
             self.parseSocketData(sock_data)
-            
+    
+    def getPortNumber(self):
+        return self.portNumber
+    
     def parseSocketData(self, socketData):
         if "Raspberry" in socketData:
             pattern = re.compile(r'(?<=\[)(.*?)(?=\])', flags = re.DOTALL)
@@ -47,8 +51,12 @@ class listen(threading.Thread):
                 if results[0] not in self.IP_ADDRESS:
                     self.connect_IP = results[0]
                     self.isConnected = True
-                    control.testServer()
+                    control.testServer(results[0])
                     return
+        elif "PiInfo" in socketData:
+            pattern = re.compile(r'(?<=\[)(.*?)(?=\])', flags = re.DOTALL)
+            results = pattern.findall(socketData)
+            self.portNumber = results[0]
 #        elif "Message" in socketData:
 #            print("Message Received")
 #            print(socketData)
