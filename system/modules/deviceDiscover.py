@@ -54,7 +54,8 @@ def scan_and_print_neighbors(net, interface, timeout=1):
             raise
 
 
-if __name__ == "__main__":
+            
+def returnDevices():
     for network, netmask, _, interface, address in scapy.config.conf.route.routes:
 
         # skip loopback network and default gw
@@ -73,3 +74,5 @@ if __name__ == "__main__":
 
         if net:
             scan_and_print_neighbors(net, interface)
+
+    

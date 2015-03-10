@@ -7,6 +7,7 @@ from modules import sqlEngine as sql
 from modules import manageLeases
 from modules import alertEngine as alert
 from modules import testEngine
+from modules import deviceDiscover as device
 import socket
 import struct
 import threading
@@ -84,7 +85,7 @@ class Driver():
         elif controlVar == 5:
             control.listDiscoveredPis(self.dPis, self.IP_ADDRESS)
         elif controlVar == 6:
-            control.testClient()
+            device.returnDevices()
         elif controlVar == 7:
             control.listAllNetworkMachines()
         elif controlVar == 8:

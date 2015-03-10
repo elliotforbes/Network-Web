@@ -32,6 +32,8 @@ def parseControl(str):
         self.setupTCPtest()
     elif args[0] == "list":
         return 5
+    elif args[0] == "AllDevices":
+        return 6
     elif args[0] == "UDPTest":
         self.testClient(args[1])
     elif args[0] == "connect":
