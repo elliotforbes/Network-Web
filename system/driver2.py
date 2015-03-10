@@ -87,9 +87,9 @@ class Driver():
         elif controlVar == 6:
             device.returnDevices()
         elif controlVar == 7:
-            control.listAllNetworkMachines()
-        elif controlVar == 8:
             control.connect(self.dPis, self.connected_IP)
+        elif controlVar == 8:
+            control.listAllNetworkMachines()
         elif controlVar == 9:
             self.alertPhone = control.getPhoneNumber()
         elif controlVar == 10:
