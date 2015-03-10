@@ -23,8 +23,8 @@ class testEngine(threading.Thread):
     def run(self):
         while(1):
             time.sleep(5)
-            if not (self.testConnectivity()):
-                alert.sendAlert()
+#            if not (self.testConnectivity()):
+#                alert.sendAlert()
             if self.connected_IP:
                 self.testThroughput(self.connected_IP)
             if self.isConnected:
@@ -39,7 +39,10 @@ class testEngine(threading.Thread):
     def testConnectivity(self):
         try:
             response=urllib2.urlopen('http://74.125.228.100',timeout=1)
-            return True
+            if response:
+                return True
+            else:
+                return False
         except urllib2.URLError as err: pass
         return False
     
