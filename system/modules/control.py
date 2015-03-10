@@ -2,6 +2,7 @@ import threading
 import string
 from modules import speedtest
 import commands
+import time
 
 dPis = []
 speedTest = False
