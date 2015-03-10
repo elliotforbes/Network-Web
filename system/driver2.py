@@ -100,6 +100,7 @@ class Driver():
             # Prints phone number connected with the alert Engine
             print(self.alertPhone)
         elif controlVar == 11:
+            print(self.connected_IP)
             control.testClient(self.connected_IP)
             
     def speedtest(self):
