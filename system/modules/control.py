@@ -99,6 +99,8 @@ def testClient(host, port):
     t1 = time.time()
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     t2 = time.time()
+    print("Trying to connect to... ", host)
+    print("On Port..." , port)
     s.connect((str(host), int(port)))
     t3 = time.time()
     i = 0
