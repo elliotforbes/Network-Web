@@ -1,4 +1,4 @@
-<html ng-app="myApp">
+<html ng-app="">
     <head>
         <title>Network Monitoring | Elliot Forbes</title>
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -21,10 +21,7 @@
                <div class="col-md-12">
                    <div class="status-bar">Script Status: <span class="green">Online</span></div>
                </div>
-                <div ng-controller="GraphCtrl" class="col-md-6">
-                    <div class="content-box">
-                        <div id="testChart"></div>
-                    </div>
+                <div class="col-md-6">
                     <div class="content-box">
                         <h2>Pis on the Network</h2>
                         <div>
@@ -57,11 +54,6 @@
                     </div>
                     
                     <div class="content-box">
-                        <h2>Download/Upload Test Results</h2>
-                        <br/>
-                        <div id="chart3"></div>
-                    </div>
-                    <div class="content-box">
                         <h2>Links:</h2>
                         <br/>
                         If you wish to view the source code for this project then check out the following links:
@@ -71,6 +63,13 @@
                             <li><a href="https://github.com/emforce/Personal">Network Monitor</a> : The Backend python script that drives the engine.</li>
                         </ul>
                     </div>
+                    
+                    <div class="content-box">
+                        <h2>Download/Upload Test Results</h2>
+                        <br/>
+                        <div id="chart3"></div>
+                    </div>
+                    
                 </div>
                 <div class="col-md-6">
                     <div class="content-box">
@@ -79,10 +78,6 @@
                         <div id="networkStats"></div>
                     </div>
                     
-                    <div class="content-box">
-                        <h2>Total Data Used</h2>
-                        <div id="chart4"></div>
-                    </div>
                     <div class="content-box">
                         <h2>About:</h2>
                         <br/>
@@ -95,6 +90,12 @@
                         </ul>
                         </p>
                     </div>
+                    
+                    <div class="content-box">
+                        <h2>Total Data Used</h2>
+                        <div id="chart4"></div>
+                    </div>
+                    
                 </div>
             </div>
 
