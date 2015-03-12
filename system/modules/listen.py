@@ -54,6 +54,7 @@ class listen(threading.Thread):
                     self.connect_IP = results[0]
                     self.isConnected = True
                     control.testServer(self.SSDP_SOCK, results[0])
+                    self.isConnected = False
                 else:
 #                    print(self.IP_ADDRESS)
 #                    print(results[0])
