@@ -57,7 +57,7 @@ class Driver():
         self.leaseThread = manageLeases.manageLeases(self.dPis)
 #        self.testThread = testEngine.testEngine(self.connected_IP, self.isConnected)
         self.sniffThread = trafficAnalyser.trafficAnalyser()
-        self.alertThread = alert.alertEngine()
+#        self.alertThread = alert.alertEngine()
 #        self.controlThread = control.control(self.dPis, self.speedTest)
     
     def runThreads(self):
