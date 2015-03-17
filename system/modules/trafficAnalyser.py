@@ -8,7 +8,7 @@ class trafficAnalyser(threading.Thread):
     UDPCount = 0
     SSDPCount = 0
     MiscCount = 0
-    PacketCount = 0
+    packetCount = 0
     
     def __init__(self):
         super(trafficAnalyser, self).__init__()
