@@ -8,25 +8,34 @@ class trafficAnalyser(threading.Thread):
     UDPCount = 0
     SSDPCount = 0
     MiscCount = 0
+    PacketCount = 0
     
     def __init__(self):
         super(trafficAnalyser, self).__init__()
         print("Traffic Analysis Started")
-        
+    
+    def customAction(packet):
+        self.packetCount += 1
+        return "Packet #" + str(self.packetCount) + ": " + packet[0][1].src + "==>" + packet[0][1].dst
+
+    
     def run(self):
         while(1):
-            for pkt in sniff():
-                print(pkt)
-                if IP in pkt:
-                    self.IPCount += 1
-                elif UDP in pkt:
-                    self.UDPCount += 1
-                elif TCP in pkt:
-                    self.TCPCount += 1
-                elif SSDP in pkt:
-                    self.SSDPCount += 1
-                else:
-                    self.MiscCount += 1
+            ## Define our Custom Action function
+            ## Setup sniff, filtering for IP traffic
+            sniff(filter="ip",prn=customAction)
+#            for pkt in sniff():
+#                print(pkt)
+#                if IP in pkt:
+#                    self.IPCount += 1
+#                elif UDP in pkt:
+#                    self.UDPCount += 1
+#                elif TCP in pkt:
+#                    self.TCPCount += 1
+#                elif SSDP in pkt:
+#                    self.SSDPCount += 1
+#                else:
+#                    self.MiscCount += 1
         
 
     def printAll(self):
