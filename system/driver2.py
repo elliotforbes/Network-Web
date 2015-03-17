@@ -8,7 +8,7 @@ from modules import manageLeases
 from modules import alertEngine as alert
 from modules import testEngine
 from modules import deviceDiscover as device
-from modules import sniff
+from modules import trafficAnalyser
 import socket
 import struct
 import threading
@@ -56,7 +56,7 @@ class Driver():
         self.advertiseThread = advertise.advertise(self.TCP_SOCK, self.SSDP_REQUEST)
         self.leaseThread = manageLeases.manageLeases(self.dPis)
         self.testThread = testEngine.testEngine(self.connected_IP, self.isConnected)
-        self.sniffThread = sniff.sniff()
+        self.sniffThread = trafficAnalyser.trafficAnalyser()
 #        self.alertThread = alert.alertEngine()
 #        self.controlThread = control.control(self.dPis, self.speedTest)
     
