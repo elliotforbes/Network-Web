@@ -5,3 +5,9 @@ twilio
 Scapy
 
  - pip install scapy
+ 
+ 
+ Add alert configurations
+ 
+ Put the third-party tools in the System Design 
+ 

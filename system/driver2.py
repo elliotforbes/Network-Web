@@ -8,12 +8,15 @@ from modules import manageLeases
 from modules import alertEngine as alert
 from modules import testEngine
 from modules import deviceDiscover as device
+from module import sniff
 import socket
 import struct
 import threading
 import sys
 import string
 from subprocess import call
+
+# - Implement traffic classifcation sniffer
 
 class Driver():
     
@@ -33,6 +36,7 @@ class Driver():
     leaseThread = None
     alertThread = None
     testThread = None
+    sniffThread = None
     
     # SOCKETS
     SSDP_SOCK = sockets.getSSDPSocket()
@@ -52,6 +56,7 @@ class Driver():
         self.advertiseThread = advertise.advertise(self.TCP_SOCK, self.SSDP_REQUEST)
         self.leaseThread = manageLeases.manageLeases(self.dPis)
         self.testThread = testEngine.testEngine(self.connected_IP, self.isConnected)
+        self.sniffThread = sniff.sniff()
 #        self.alertThread = alert.alertEngine()
 #        self.controlThread = control.control(self.dPis, self.speedTest)
     
@@ -60,6 +65,7 @@ class Driver():
         self.advertiseThread.start()
         self.leaseThread.start()
         self.testThread.start()
+        self.sniffThread.start()
 #        self.alertThread.start()
 #        self.controlThread.start()
         
