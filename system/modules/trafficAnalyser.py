@@ -14,18 +14,20 @@ class trafficAnalyser(threading.Thread):
         print("Traffic Analysis Started")
         
     def run(self):
-        for pkt in sniff():
-            if IP in pkt:
-                self.IPCount += 1
-            elif UDP in pkt:
-                self.UDPCount += 1
-            elif TCP in pkt:
-                self.TCPCount += 1
-            elif SSDP in pkt:
-                self.SSDPCount += 1
-            else:
-                self.MiscCount += 1
-        self.printAll()
+        while(1):
+            for pkt in sniff():
+                print(pkt)
+                if IP in pkt:
+                    self.IPCount += 1
+                elif UDP in pkt:
+                    self.UDPCount += 1
+                elif TCP in pkt:
+                    self.TCPCount += 1
+                elif SSDP in pkt:
+                    self.SSDPCount += 1
+                else:
+                    self.MiscCount += 1
+        
 
     def printAll(self):
         print("TCP Count: " , self.TCPCount)

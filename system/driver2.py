@@ -42,14 +42,14 @@ class Driver():
     SSDP_SOCK = sockets.getSSDPSocket()
     TCP_SOCK = sockets.getTCPSock()
     
-    
     #
     # FUNCTIONS
     #
     def __init__(self):
+        sql.install()
         self.initThreads()
         self.runThreads()
-        sql.install()
+        
     
     def initThreads(self):
         self.listenThread = listen.listen(self.SSDP_SOCK, self.dPis, self.isConnected, self.IP_ADDRESS)
@@ -57,7 +57,7 @@ class Driver():
         self.leaseThread = manageLeases.manageLeases(self.dPis)
 #        self.testThread = testEngine.testEngine(self.connected_IP, self.isConnected)
         self.sniffThread = trafficAnalyser.trafficAnalyser()
-#        self.alertThread = alert.alertEngine()
+        self.alertThread = alert.alertEngine()
 #        self.controlThread = control.control(self.dPis, self.speedTest)
     
     def runThreads(self):
