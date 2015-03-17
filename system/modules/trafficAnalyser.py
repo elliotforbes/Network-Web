@@ -15,7 +15,7 @@ class trafficAnalyser(threading.Thread):
         
     def run(self):
         while(1):
-            for pkt in sniff(iface='eth1'):
+            for pkt in sniff():
                 if IP in pkt:
                     self.IPCount += 1
                 elif UDP in pkt:
@@ -29,11 +29,11 @@ class trafficAnalyser(threading.Thread):
             printAll()
 
     def printAll(self):
-        print("TCP Count: " ,TCPCount)
-        print("IP Count: " ,IPCount)
-        print("UDP Count: " ,UDPCount)
-        print("SSDP Count: " ,SSDPCount)
-        print("Misc Count: " ,MiscCount)
+        print("TCP Count: " , self.TCPCount)
+        print("IP Count: " , self.IPCount)
+        print("UDP Count: " , self.UDPCount)
+        print("SSDP Count: " , self.SSDPCount)
+        print("Misc Count: " , self.MiscCount)
     
     
     def expand(x):
