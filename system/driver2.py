@@ -8,7 +8,7 @@ from modules import manageLeases
 from modules import alertEngine as alert
 from modules import testEngine
 from modules import deviceDiscover as device
-from module import sniff
+from modules import sniff
 import socket
 import struct
 import threading
