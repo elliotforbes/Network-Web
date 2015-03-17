@@ -14,7 +14,7 @@ class trafficAnalyser(threading.Thread):
         super(trafficAnalyser, self).__init__()
         print("Traffic Analysis Started")
     
-    def customAction(packet):
+    def customAction(self, packet):
         self.packetCount += 1
         return "Packet #" + str(self.packetCount) + ": " + packet[0][1].src + "==>" + packet[0][1].dst
 
@@ -23,7 +23,7 @@ class trafficAnalyser(threading.Thread):
         while(1):
             ## Define our Custom Action function
             ## Setup sniff, filtering for IP traffic
-            sniff(filter="ip",prn=customAction)
+            sniff(filter="ip",prn=self.customAction)
 #            for pkt in sniff():
 #                print(pkt)
 #                if IP in pkt:
