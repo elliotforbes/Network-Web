@@ -18,6 +18,10 @@ from subprocess import call
 
 # - Implement traffic classifcation sniffer
 
+# - Design and Implementation
+# - Background research
+# - 
+
 class Driver():
     
     # GLOBAL VARIABLES
