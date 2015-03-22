@@ -23,7 +23,7 @@ class trafficAnalyser(threading.Thread):
         while(1):
             try:
                 sniff(filter="ip",prn=self.customAction)
-            except e:
+            except Exception, e:
                 print(e)
 #            for pkt in sniff():
 #                print(pkt)
