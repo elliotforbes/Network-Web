@@ -10,13 +10,15 @@ class trafficAnalyser(threading.Thread):
     MiscCount = 0
     packetCount = 0
     
+    
     def __init__(self):
         super(trafficAnalyser, self).__init__()
         print("Traffic Analysis Started")
     
     def customAction(self, packet):
         self.packetCount += 1
-        return "Packet #" + str(self.packetCount) + ": " + packet[0][1].src + "==>" + packet[0][1].dst
+        
+        return "Packet #" + str(self.packetCount) + ": " + packet[0][1].src + "==>" + packet[0][1].dst + "  :  PROTO: " + packet[0][1].proto
 
     
     def run(self):
