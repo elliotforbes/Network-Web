@@ -21,9 +21,10 @@ class trafficAnalyser(threading.Thread):
     
     def run(self):
         while(1):
-            ## Define our Custom Action function
-            ## Setup sniff, filtering for IP traffic
-            sniff(filter="ip",prn=self.customAction)
+            try:
+                sniff(filter="ip",prn=self.customAction)
+            except e:
+                print(e)
 #            for pkt in sniff():
 #                print(pkt)
 #                if IP in pkt:
