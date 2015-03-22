@@ -16,13 +16,13 @@ class trafficAnalyser(threading.Thread):
     
     def customAction(self, packet):
         self.packetCount += 1
-        return "Packet #" + str(self.packetCount) + ": " + packet[0][1].src + "==>" + packet[0][1].dst
+#        return "Packet #" + str(self.packetCount) + ": " + packet[0][1].src + "==>" + packet[0][1].dst
 
     
     def run(self):
         while(1):
             try:
-                sniff(filter="ip",prn=self.customAction)
+                sniff(iface="eth01",prn=self.customAction)
             except Exception, e:
                 print(e)
 #            for pkt in sniff():
