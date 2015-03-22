@@ -18,7 +18,7 @@ class trafficAnalyser(threading.Thread):
     def customAction(self, packet):
         self.packetCount += 1
         
-        return "Packet #" + str(self.packetCount) + ": " + packet[0][1].src + "==>" + packet[0][1].dst + "  :  PROTO: " + packet[0][1].proto
+        return "Packet #" + str(self.packetCount) + ": " + packet[0][1].src + "==>" + packet[0][1].dst + "  :  PROTO: " + str(packet[0][1].proto)
 
     
     def run(self):
