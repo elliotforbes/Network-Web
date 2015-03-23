@@ -22,8 +22,7 @@ class trafficAnalyser(threading.Thread):
         elif(packet.proto == 17):
             self.SSDPCount += 1
         
-        print("TCPCount: " + str(self.TCPCount) + " SSDPCount: " + str(self.SSDPCount)
-        return "Packet #" + str(self.packetCount) + ": " + packet[0][1].src + "==>" + packet[0][1].dst + "  :  PROTO: " + str(packet.proto)
+        return "Packet #" + str(self.packetCount) + ": " + packet[0][1].src + "==>" + packet[0][1].dst + "  :  PROTO: " + str(packet.proto[0][1])
 
     
     def run(self):
