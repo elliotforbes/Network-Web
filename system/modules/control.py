@@ -4,6 +4,7 @@ from modules import speedtest
 import commands
 import time
 import socket
+from modules import sqlEngine as sql
 
 dPis = []
 speedTest = False
@@ -129,6 +130,7 @@ def testClient(host, port):
             print 'Total:', t5-t1
             print 'Throughput:', round((10240*count*0.001) / (t5-t1), 3),
             print 'K/sec.'
+            sql.insertThroughput(round((10240*count*0.001) / (t5 - t1), 3))
         break
 
 def getPhoneNumber():

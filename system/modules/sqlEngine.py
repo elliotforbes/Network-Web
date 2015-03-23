@@ -12,12 +12,14 @@ def install():
         throughput = open('scripts/create/createThroughput.sql', 'r').read()
         upload = open('scripts/create/createUpload.sql', 'r').read()
         download = open('scripts/create/createDownload.sql', 'r').read()
+        speeds = open('scripts/create/createSpeeds.sql', 'r').read()
         
         cur.execute(connected);
         cur.execute(data);
         cur.execute(throughput);
         cur.execute(upload);
         cur.execute(download);
+        cur.execute(speeds);
         
         print("SQLEngine Started.")
         
@@ -45,7 +47,40 @@ def dropDiscoveredTable():
     except lite.Error, e:
         print("Error %s:" % e.args[0])
         sys.exit(1);
+
+def insertThroughput(RESULT):
+    try:
+        con = lite.connect("main.db")
         
+        query = "INSERT INTO throughput (RESULT)"
+        query += "VALUES ('"
+        query += RESULT
+        query += "');"
+        
+        con.execute(query);
+        
+        con.commit()
+        
+    except Exception,e:
+        print(e)
+
+def insertSpeeds(DOWNLOAD, UPLOAD):
+    try:
+        con = lite.connect("main.db")
+        
+        query = "INSERT INTO speeds (DOWNLOAD, UPLOAD)"
+        speed += "VALUES ('"
+        query += DOWNLOAD
+        query += "', '"
+        query += UPLOAD
+        query += "');"
+        
+        con.execute(query);
+        
+        con.commit()
+        
+    except Exception,e:
+        print(e)
         
 def selectAll():
     try:
