@@ -52,7 +52,7 @@ def insertThroughput(RESULT):
     try:
         con = lite.connect("main.db")
         
-        query = "INSERT INTO throughput (RESULT)"
+        query = "INSERT INTO throughputResults (RESULT)"
         query += "VALUES ('"
         query += str(RESULT)
         query += "');"
