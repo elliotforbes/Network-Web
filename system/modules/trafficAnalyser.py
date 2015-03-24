@@ -20,6 +20,7 @@ class trafficAnalyser(threading.Thread):
     
     def classifyTraffic(self, packet):
         self.packetCount += 1
+        print("stuff")
         if(packet.dport == 80):
             self.HTTPCount += 1
         elif(packet.dport == 22):
@@ -36,9 +37,7 @@ class trafficAnalyser(threading.Thread):
 #            self.TCPCount +=1
 #        elif(packet.proto == 17):
 #            self.SSDPCount += 1
-        
-#        return "Packet #" + str(self.packetCount) + ": " + packet[0][1].src + "==>" + packet[0][1].dst + "  :  PROTO: " + str(packet.dport)
-
+    
     
     def run(self):
         while(1):
