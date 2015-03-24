@@ -33,7 +33,10 @@ class listen(threading.Thread):
             lease = leaseTime.findall(socketData)
             results = pattern.findall(socketData)
             if results not in self.dPis:
-                self.dPis.append(results)
+                if results[0] in self.IP_ADDRESS:
+                    return
+                else:
+                    self.dPis.append(results)
                 # Move this to another thread 
                 # ensure that no packets are missed.
                 sql.insertPi(results[0], 1, lease[0])
