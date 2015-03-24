@@ -16,6 +16,7 @@ def connect(dPis, connected_IP, socket):
             print("No Available Pis to Connect With")
         else:
             connected_IP = dPis[0]
+            print(dPis[0])
             sendConnectMsg(socket, connected_IP)
             print("Connected with: %s", connected_IP)
             return connected_IP[0]
