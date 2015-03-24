@@ -116,6 +116,8 @@ class Driver():
         elif controlVar == 12:
             control.testLatency(self.connected_IP, self.listenThread.getPortNumber())
             self.connected_IP = None
+        elif controlVar == 13:
+            self.sniffThread.printAll()
             
     def speedtest(self):
         speedtest.speedtest()

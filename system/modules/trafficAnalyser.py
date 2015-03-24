@@ -12,6 +12,7 @@ class trafficAnalyser(threading.Thread):
     SSDPCount = 0
     SSHCount = 0
     POPCount = 0
+    MISCCount = 0
     
     def __init__(self):
         super(trafficAnalyser, self).__init__()
@@ -29,6 +30,8 @@ class trafficAnalyser(threading.Thread):
             self.SSDPCount += 1
         elif((packet.dport == 2525) or (packet.dport == 25)):
             self.SMTPCount += 1
+        else:
+            self.MISCCount += 1
 #        if(packet.proto == 6):
 #            self.TCPCount +=1
 #        elif(packet.proto == 17):
@@ -56,14 +59,16 @@ class trafficAnalyser(threading.Thread):
 #                else:
 #                    self.MiscCount += 1
         
-
-    def printAll(self):
-        print("TCP Count: " , self.TCPCount)
-        print("IP Count: " , self.IPCount)
-        print("UDP Count: " , self.UDPCount)
-        print("SSDP Count: " , self.SSDPCount)
-        print("Misc Count: " , self.MiscCount)
     
+    
+    def printAll(self):
+        print("HTTP Count: " , self.HTTPCount)
+        print("SMTP Count: " , self.SMTPCount)
+        print("SSH Count: " , self.SSHCount)
+        print("SSDP Count: " , self.SSDPCount)
+        print("POP Count: " , self.POPCount)
+        print("BitTorrent Count: " , self.BITCount)
+        print("Misc Count: " , self.MISCCount)
     
     def expand(x):
         yield x
