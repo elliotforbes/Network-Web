@@ -114,7 +114,8 @@ class Driver():
             control.testClient(self.connected_IP, self.listenThread.getPortNumber())
             self.connected_IP = None
         elif controlVar == 12:
-            print(self.listenThread.getPortNumber())
+            control.testLatency(self.connected_IP, self.listenThread.getPortNumber())
+            self.connected_IP = None
             
     def speedtest(self):
         speedtest.speedtest()

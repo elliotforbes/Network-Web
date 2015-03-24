@@ -97,8 +97,9 @@ def listDiscoveredPis(dPis, IP_ADDRESS):
 
             
 def testLatency(host, port):
-    print(port)
-    count = 1
+    print("Latency Test Started...")
+    print("Connecting to: " , port)
+    count = 100
     testdata = 'x' * (10240-1) + '\n'
     t1 = time.time()
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
