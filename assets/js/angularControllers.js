@@ -62,35 +62,35 @@ app.controller("raspberryController", function($scope, $http, $timeout){
     poll();
 });
 
-app.controller("raspberryController", function($scope, $http, $timeout){
-    var poll = function() {
-        $timeout(function() {
-                $http.get("results/latency.php")
-                .success(function(response) {$scope.latency = response;})
-                .error(function(data, status, header, config) {
-                    console.log(alert, status, header, config);
-                });
-            
-                console.log($scope.latency);
-            poll();
-        }, 1000);
-    }
-    poll();
-});
-
-
-app.controller("throughputController", function($scope, $http, $timeout){
-   var poll = function(){
-        $timeout(function(){
-            $http.get("results/throughtput.php")
-            .success(function(response) {$scope.throughput = response;})
-            .error(function(data, status, header, config){
-                    console.log(alert, status, header,config); 
-            });
-            
-            console.log($scope.throughput);
-            
-        }, 1000);
-   }
-   poll();
-});
+//app.controller("raspberryController", function($scope, $http, $timeout){
+//    var poll = function() {
+//        $timeout(function() {
+//                $http.get("results/latency.php")
+//                .success(function(response) {$scope.latency = response;})
+//                .error(function(data, status, header, config) {
+//                    console.log(alert, status, header, config);
+//                });
+//            
+//                console.log($scope.latency);
+//            poll();
+//        }, 1000);
+//    }
+//    poll();
+//});
+//
+//
+//app.controller("throughputController", function($scope, $http, $timeout){
+//   var poll = function(){
+//        $timeout(function(){
+//            $http.get("results/throughtput.php")
+//            .success(function(response) {$scope.throughput = response;})
+//            .error(function(data, status, header, config){
+//                    console.log(alert, status, header,config); 
+//            });
+//            
+//            console.log($scope.throughput);
+//            
+//        }, 1000);
+//   }
+//   poll();
+//});
