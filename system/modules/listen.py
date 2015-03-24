@@ -33,9 +33,7 @@ class listen(threading.Thread):
             lease = leaseTime.findall(socketData)
             results = pattern.findall(socketData)
             if results not in self.dPis:
-                if results[0] in self.IP_ADDRESS:
-                    return
-                else:
+                if results[0] not in self.IP_ADDRESS:
                     self.dPis.append(results)
                 # Move this to another thread 
                 # ensure that no packets are missed.
