@@ -1,4 +1,4 @@
-<html ng-app="myApp">
+<html>
     <head>
         <title>Network Monitoring | Elliot Forbes</title>
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -9,7 +9,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body ng-app="myApp">
         <div class="topnav">
             <ul class="nav">
                 <li>Network Monitoring</li>
@@ -22,7 +22,7 @@
                    <div class="status-bar">Script Status: <span class="green">Online</span></div>
                </div>
                 <div class="col-md-6">
-                    <div class="content-box">
+                    <div class="content-box" ng-controller="raspberryController">
                         <h2>Pis on the Network</h2>
                         <table class="table table-striped">
                             <thead>
@@ -99,7 +99,7 @@
                             <li>Python</li>
                         </ul>
                         </p>
-                    </div>e
+                    </div>
                     
                     <div class="content-box">
                         <h2>Total Data Used</h2>
