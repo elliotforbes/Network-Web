@@ -44,7 +44,7 @@ def parseControl(str):
         self.setupTCPtest()
     elif args[0] == "list":
         return 5
-    elif args[0] == "AllDevices":
+    elif args[0] == "Devices":
         return 6
 #    elif args[0] == "UDPTest":
 #        test
@@ -59,10 +59,12 @@ def parseControl(str):
         return 9
     elif args[0] == "ListPhone":
         return 10
-    elif args[0] == "Throughput":
+    elif args[0] == "throughput":
         return 11
-    elif args[0] == "Latency":
+    elif args[0] == "latency":
         return 12
+    elif args[0] == "traffic":
+        return 13
     elif args[0] == "quit":
         self.quitGracefully()
     else:
