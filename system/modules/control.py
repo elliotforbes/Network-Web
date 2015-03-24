@@ -122,9 +122,9 @@ def testLatency(host, port):
         print "LATENCY: "
         print 'Raw timers:', t1, t2, t3, t4, t5
         print 'Intervals:', t2-t1, t3-t2, t4-t3, t5-t4
-        print 'Total:', t5-t1
-        print 'Throughput:', round((10240*count*0.001) / (t5-t1), 3),
-        print 'K/sec.'
+        print 'Latency:', t5-t1, 'ns'
+#        print 'Throughput:', round((10240*count*0.001) / (t5-t1), 3),
+#        print 'K/sec.'
         sql.insertLatency(round((t5 - t1), 3))
         break
     
