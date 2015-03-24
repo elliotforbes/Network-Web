@@ -13,6 +13,7 @@ def install():
         upload = open('scripts/create/createUpload.sql', 'r').read()
         download = open('scripts/create/createDownload.sql', 'r').read()
         speeds = open('scripts/create/createSpeeds.sql', 'r').read()
+        latency = open('scripts/create/createLatency.sql', 'r').read()
         
         cur.execute(connected);
         cur.execute(data);
@@ -48,6 +49,22 @@ def dropDiscoveredTable():
         print("Error %s:" % e.args[0])
         sys.exit(1);
 
+def insertThroughput(RESULT):
+    try:
+        con = lite.connect("main.db")
+        
+        query = "INSERT INTO throughputResults (RESULT)"
+        query += "VALUES ('"
+        query += str(RESULT)
+        query += "');"
+        
+        con.execute(query);
+        
+        con.commit()
+        
+    except Exception,e:
+        print(e)
+    
 def insertThroughput(RESULT):
     try:
         con = lite.connect("main.db")
