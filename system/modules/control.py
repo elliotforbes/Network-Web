@@ -60,6 +60,8 @@ def parseControl(str):
         return 10
     elif args[0] == "Throughput":
         return 11
+    elif args[0] == "Latency":
+        return 12
     elif args[0] == "quit":
         self.quitGracefully()
     else:
@@ -92,7 +94,46 @@ def listDiscoveredPis(dPis, IP_ADDRESS):
     for pi in dPis:
         if IP_ADDRESS not in pi:
             print(pi)
+
             
+def testLatency(host, port):
+    print(port)
+    count = 1
+    testdata = 'x' * (10240-1) + '\n'
+    t1 = time.time()
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    t2 = time.time()
+    print("Trying to connect to... ", host)
+    print("On Port..." ,port)
+    s.connect((str(host), int(port)))
+    t3 = time.time()
+    i = 0
+    while(1):
+        try:
+            count = 1
+        except:
+            count = None
+            print "Error, you need to specify number of packets you want to send."
+        if not data:
+            pass
+        else:
+            while i < count:
+                i = i+1
+                s.send(testdata)
+            s.shutdown(1) # Send EOF
+            t4 = time.time()
+            data = s.recv(10240)
+            t5 = time.time()
+            print data
+            print "LATENCY: "
+            print 'Raw timers:', t1, t2, t3, t4, t5
+            print 'Intervals:', t2-t1, t3-t2, t4-t3, t5-t4
+            print 'Total:', t5-t1
+            print 'Throughput:', round((10240*count*0.001) / (t5-t1), 3),
+            print 'K/sec.'
+            sql.insertThroughput(round((10240*count*0.001) / (t5 - t1), 3))
+        break
+    
 # This will run the test on the network.
 def testClient(host, port):
     print(port)
