@@ -21,6 +21,7 @@ def install():
         cur.execute(upload);
         cur.execute(download);
         cur.execute(speeds);
+        cur.execute(latency);
         
         print("SQLEngine Started.")
         
@@ -49,6 +50,8 @@ def dropDiscoveredTable():
         print("Error %s:" % e.args[0])
         sys.exit(1);
 
+        
+        
 def insertLatency(RESULT):
     try:
         con = lite.connect("main.db")
