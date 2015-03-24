@@ -54,7 +54,7 @@ def insertThroughput(RESULT):
         
         query = "INSERT INTO throughput (RESULT)"
         query += "VALUES ('"
-        query += RESULT
+        query += str(RESULT)
         query += "');"
         
         con.execute(query);
