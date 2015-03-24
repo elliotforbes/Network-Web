@@ -62,6 +62,19 @@ app.controller("raspberryController", function($scope, $http, $timeout){
     poll();
 });
 
+app.controller("raspberryController", function($scope, $http, $timeout){
+    var poll = function() {
+        $timeout(function() {
+            $http.get("results/latency.php")
+            .success(function(response) {$scope.latency = response;})
+            .error(function(data, status, header, config){
+                console.log(alert, status, header, config); 
+            });
+        });
+    }
+    poll();
+});
+
 
 app.controller("throughputController", function($scope, $http, $timeout){
    var poll = function(){

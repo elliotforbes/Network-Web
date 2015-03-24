@@ -24,9 +24,6 @@
                 <div class="col-md-6">
                     <div class="content-box">
                         <h2>Pis on the Network</h2>
-                        <div>
-                            <div data-chart data-value="value"></div>
-                        </div>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -49,8 +46,21 @@
                     
                     <div class="content-box">
                         <h2>Throughput Test Results</h2>
-                        <br/>
-                        <div id="throughput"></div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Test ID</td>
+                                    <td>Latency</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="l in latency">
+                                    <td>{{ x.ID }}</td>
+                                    <td>{{ x.RESULT }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     
                     <div class="content-box">
