@@ -109,30 +109,24 @@ def testLatency(host, port):
     t3 = time.time()
     i = 0
     while(1):
-        try:
-            count = 1
-        except:
-            count = None
-            print "Error, you need to specify number of packets you want to send."
-        if not data:
-            pass
-        else:
-            while i < count:
-                i = i+1
-                s.send(testdata)
-            s.shutdown(1) # Send EOF
-            t4 = time.time()
-            data = s.recv(10240)
-            t5 = time.time()
-            print data
-            print "LATENCY: "
-            print 'Raw timers:', t1, t2, t3, t4, t5
-            print 'Intervals:', t2-t1, t3-t2, t4-t3, t5-t4
-            print 'Total:', t5-t1
-            print 'Throughput:', round((10240*count*0.001) / (t5-t1), 3),
-            print 'K/sec.'
-            sql.insertThroughput(round((10240*count*0.001) / (t5 - t1), 3))
-        break
+        count = 1
+
+        while i <= count:
+            i = i+1
+            s.send(testdata)
+        s.shutdown(1) # Send EOF
+        t4 = time.time()
+        data = s.recv(10240)
+        t5 = time.time()
+        print data
+        print "LATENCY: "
+        print 'Raw timers:', t1, t2, t3, t4, t5
+        print 'Intervals:', t2-t1, t3-t2, t4-t3, t5-t4
+        print 'Total:', t5-t1
+        print 'Throughput:', round((10240*count*0.001) / (t5-t1), 3),
+        print 'K/sec.'
+        sql.insertThroughput(round((10240*count*0.001) / (t5 - t1), 3))
+    break
     
 # This will run the test on the network.
 def testClient(host, port):
