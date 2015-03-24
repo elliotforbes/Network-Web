@@ -18,7 +18,7 @@ class trafficAnalyser(threading.Thread):
         super(trafficAnalyser, self).__init__()
         print("Traffic Analysis Started")
     
-    def customAction(self, packet):
+    def classifyTraffic(self, packet):
         self.packetCount += 1
         if(packet.dport == 80):
             self.HTTPCount += 1
@@ -28,7 +28,7 @@ class trafficAnalyser(threading.Thread):
             self.POPCount += 1
         elif(packet.dport == 1900):
             self.SSDPCount += 1
-        elif((packet.dport == 2525) or (packet.dport == 25)):
+        elif(packet.dport == 2525):
             self.SMTPCount += 1
         else:
             self.MISCCount += 1
@@ -43,7 +43,7 @@ class trafficAnalyser(threading.Thread):
     def run(self):
         while(1):
             try:
-                sniff(prn=self.customAction)
+                sniff(prn=self.classifyTraffic)
             except Exception, e:
                 print(e)
 #            for pkt in sniff():
