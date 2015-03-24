@@ -10,6 +10,7 @@ class trafficAnalyser(threading.Thread):
     BITCount = 0
     packetCount = 0
     SSDPCount = 0
+    SSHCount = 0
     
     def __init__(self):
         super(trafficAnalyser, self).__init__()
@@ -34,7 +35,7 @@ class trafficAnalyser(threading.Thread):
     def run(self):
         while(1):
             try:
-                sniff(prn=self.customAction)
+                sniff(iface='eth1', prn=self.customAction)
             except Exception, e:
                 print(e)
 #            for pkt in sniff():
