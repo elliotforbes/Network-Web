@@ -111,7 +111,6 @@ def testLatency(host, port):
     i = 0
     while(1):
         count = 1
-
         while i < count:
             i = i+1
             s.send(testdata)
@@ -126,7 +125,7 @@ def testLatency(host, port):
         print 'Total:', t5-t1
         print 'Throughput:', round((10240*count*0.001) / (t5-t1), 3),
         print 'K/sec.'
-        sql.insertLatency(round((10240*count*0.001) / (t5 - t1), 3))
+        sql.insertLatency(round((t5 - t1), 3))
         break
     
 # This will run the test on the network.
