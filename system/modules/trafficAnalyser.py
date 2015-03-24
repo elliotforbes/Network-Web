@@ -8,13 +8,14 @@ class trafficAnalyser(threading.Thread):
     DHCPCount = 0
     SMTPCount = 0
     BITCount = 0
-    
+    packetCount = 0
     
     def __init__(self):
         super(trafficAnalyser, self).__init__()
         print("Traffic Analysis Started")
     
     def customAction(self, packet):
+        self.packetCount += 1
 #        if(packet.proto == 6):
 #            self.TCPCount +=1
 #        elif(packet.proto == 17):
