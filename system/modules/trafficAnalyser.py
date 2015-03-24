@@ -20,7 +20,7 @@ class trafficAnalyser(threading.Thread):
     
     def classifyTraffic(self, packet):
         self.packetCount += 1
-        print("stuff")
+#        print("stuff")
         if(packet.dport == 80):
             self.HTTPCount += 1
         elif(packet.dport == 22):
@@ -33,6 +33,7 @@ class trafficAnalyser(threading.Thread):
             self.SMTPCount += 1
         else:
             self.MISCCount += 1
+
 #        if(packet.proto == 6):
 #            self.TCPCount +=1
 #        elif(packet.proto == 17):
@@ -41,10 +42,8 @@ class trafficAnalyser(threading.Thread):
     
     def run(self):
         while(1):
-            try:
-                sniff(prn=self.classifyTraffic)
-            except Exception, e:
-                print(e)
+            sniff(prn=self.classifyTraffic)
+            
 #            for pkt in sniff():
 #                print(pkt)
 #                if IP in pkt:
