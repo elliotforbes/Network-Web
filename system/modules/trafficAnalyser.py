@@ -9,6 +9,7 @@ class trafficAnalyser(threading.Thread):
     SMTPCount = 0
     BITCount = 0
     packetCount = 0
+    SSDPCount = 0
     
     def __init__(self):
         super(trafficAnalyser, self).__init__()
@@ -16,6 +17,12 @@ class trafficAnalyser(threading.Thread):
     
     def customAction(self, packet):
         self.packetCount += 1
+        if(packet.dport == 80):
+            self.HTTPCount += 1
+        elif(packet.dport == 22):
+            self.SSHCount += 1
+        elif(packet.dport == 1900):
+            self.SSDPCount += 1
 #        if(packet.proto == 6):
 #            self.TCPCount +=1
 #        elif(packet.proto == 17):
@@ -27,7 +34,7 @@ class trafficAnalyser(threading.Thread):
     def run(self):
         while(1):
             try:
-                sniff(filter="ip",prn=self.customAction)
+                sniff(prn=self.customAction)
             except Exception, e:
                 print(e)
 #            for pkt in sniff():
