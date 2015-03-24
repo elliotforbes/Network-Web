@@ -98,7 +98,6 @@ def listDiscoveredPis(dPis, IP_ADDRESS):
             
 def testLatency(host, port):
     print("Latency Test Started...")
-    print("Connecting to: " , port)
     count = 100
     testdata = 'x' * (10240-1) + '\n'
     t1 = time.time()

@@ -49,11 +49,11 @@ def dropDiscoveredTable():
         print("Error %s:" % e.args[0])
         sys.exit(1);
 
-def insertThroughput(RESULT):
+def insertLatency(RESULT):
     try:
         con = lite.connect("main.db")
         
-        query = "INSERT INTO throughputResults (RESULT)"
+        query = "INSERT INTO latency (RESULT)"
         query += "VALUES ('"
         query += str(RESULT)
         query += "');"
