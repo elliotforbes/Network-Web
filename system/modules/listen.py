@@ -35,9 +35,10 @@ class listen(threading.Thread):
             if results not in self.dPis:
                 if self.IP_ADDRESS not in results[0]:
                     self.dPis.append(results)
+                    sql.insertPi(results[0], 1, lease[0])
                 # Move this to another thread 
                 # ensure that no packets are missed.
-                sql.insertPi(results[0], 1, lease[0])
+                
             elif results in self.dPis:
                 sql.equalsLease(results[0], "100")
         elif "PiControl" in socketData:
