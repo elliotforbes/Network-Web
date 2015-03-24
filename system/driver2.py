@@ -112,6 +112,7 @@ class Driver():
         elif controlVar == 11:
             print(self.listenThread.getPortNumber())
             control.testClient(self.connected_IP, self.listenThread.getPortNumber())
+            self.connected_IP = None
         elif controlVar == 12:
             print(self.listenThread.getPortNumber())
             

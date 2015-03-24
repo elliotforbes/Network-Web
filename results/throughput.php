@@ -14,8 +14,7 @@ try{
             $outp .= ",";
         }
         $outp .= ' { "ID":"' . $row[0] .'",';
-        $outp .= '"RESULT":"' . $row[1] .'",';
-        $outp .= '"CREATED":"' . $row[2] .'" }';
+        $outp .= '"RESULT":"' . $row[1] . '" }';
     }
     $outp .= ']';
     echo $outp;
