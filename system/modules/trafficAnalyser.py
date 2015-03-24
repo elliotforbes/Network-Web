@@ -3,12 +3,11 @@ import threading
 
 class trafficAnalyser(threading.Thread):
     
-    TCPCount = 0
-    IPCount = 0
-    UDPCount = 0
-    SSDPCount = 0
-    MiscCount = 0
-    packetCount = 0
+    HTTPCount = 0
+    FTPCount = 0
+    DHCPCount = 0
+    SMTPCount = 0
+    BITCount = 0
     
     
     def __init__(self):
@@ -22,7 +21,7 @@ class trafficAnalyser(threading.Thread):
         elif(packet.proto == 17):
             self.SSDPCount += 1
         
-        return "Packet #" + str(self.packetCount) + ": " + packet[0][1].src + "==>" + packet[0][1].dst + "  :  PROTO: " + str(packet.proto)
+        return "Packet #" + str(self.packetCount) + ": " + packet[0][1].src + "==>" + packet[0][1].dst + "  :  PROTO: " + str(packet.dport)
 
     
     def run(self):

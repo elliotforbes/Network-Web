@@ -69,7 +69,7 @@ class Driver():
         self.advertiseThread.start()
         self.leaseThread.start()
 #        self.testThread.start()
-#        self.sniffThread.start()
+        self.sniffThread.start()
 #        self.alertThread.start()
 #        self.controlThread.start()
         
