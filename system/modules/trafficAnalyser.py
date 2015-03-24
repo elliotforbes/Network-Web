@@ -15,10 +15,10 @@ class trafficAnalyser(threading.Thread):
         print("Traffic Analysis Started")
     
     def customAction(self, packet):
-        if(packet.proto == 6):
-            self.TCPCount +=1
-        elif(packet.proto == 17):
-            self.SSDPCount += 1
+#        if(packet.proto == 6):
+#            self.TCPCount +=1
+#        elif(packet.proto == 17):
+#            self.SSDPCount += 1
         
         return "Packet #" + str(self.packetCount) + ": " + packet[0][1].src + "==>" + packet[0][1].dst + "  :  PROTO: " + str(packet.dport)
 
