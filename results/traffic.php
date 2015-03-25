@@ -6,7 +6,7 @@ try{
     
     $dbh = new PDO('sqlite:../system/main.db') or die('cannot open db');
     $query = 'SELECT * FROM traffic;';
-    $results = $dbh->($query);
+    $results = $dbh->query($query);
     
     $outp = '[';
     foreach($results as $row){
