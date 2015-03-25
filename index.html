@@ -84,6 +84,34 @@
                     <div class="content-box">
                        <h2>Network Traffic Percentages</h2>
                        <br/>
+                       <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>HTTP</td>
+                                    <td>FTP</td>
+                                    <td>SSH</td>
+                                    <td>SSDP</td>
+                                    <td>SMTP</td>
+                                    <td>DHCP</td>
+                                    <td>POP</td>
+                                    <td>MISC</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="x in traffic">
+                                    <td>{{ x.ID }}</td>
+                                    <td>{{ x.HTTPCount }} Packets</td>
+                                    <td>{{ x.FTPCount }} Packets</td>
+                                    <td>{{ x.SSHCount }} Packets</td>
+                                    <td>{{ x.SSDPCount }} Packets</td>
+                                    <td>{{ x.SMTPCount }} Packets</td>
+                                    <td>{{ x.DHCPCount }} Packets</td>
+                                    <td>{{ x.POPCount }} Packets</td>
+                                    <td>{{ x.MISCCount }} Packets</td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <div id="networkStats"></div>
                     </div>
                     
