@@ -1,5 +1,6 @@
 from scapy.all import *
 import threading
+import sqlEngine as sql
 
 class trafficAnalyser(threading.Thread):
     
@@ -69,6 +70,7 @@ class trafficAnalyser(threading.Thread):
         print("POP Count: " , self.POPCount)
         print("BitTorrent Count: " , self.BITCount)
         print("Misc Count: " , self.MISCCount)
+        sql.insertTraffic(self.HTTPCount, self.FTPCount, self.SSHCount, self.SSDPCount, self.SMTPCount, self.DHCPCount, self.POPCount, self.MISCCount)
     
     def expand(x):
         yield x

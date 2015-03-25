@@ -14,6 +14,7 @@ def install():
         download = open('scripts/create/createDownload.sql', 'r').read()
         speeds = open('scripts/create/createSpeeds.sql', 'r').read()
         latency = open('scripts/create/createLatency.sql', 'r').read()
+        traffic = open('scripts/create/createTraffic.sql', 'r').read()
         
         cur.execute(connected);
         cur.execute(data);
@@ -22,13 +23,14 @@ def install():
         cur.execute(download);
         cur.execute(speeds);
         cur.execute(latency);
+        cur.execute(traffic);
         
         print("SQLEngine Started.")
         
         con.commit()
         
     except lite.Error, e:
-        print "Error shite %s:" % e.args[0]
+        print "Error %s:" % e.args[0]
         sys.exit(1)
 
         sys.exit(1)
@@ -44,6 +46,7 @@ def dropDiscoveredTable():
         cur.execute('''DROP TABLE downloadResults''')
         cur.execute('''DROP TABLE uploadResults''')
         cur.execute('''DROP TABLE dataResults''')
+        cur.execute('''DROP TABLE traffic''')
         
         con.commit()
     except lite.Error, e:
@@ -78,6 +81,36 @@ def insertThroughput(RESULT):
         query += "');"
         
         con.execute(query);
+        
+        con.commit()
+        
+    except Exception,e:
+        print(e)
+        
+def insertTraffic(HTTPCount, FTPCount, SSHCount, SSDPCount, SMTPCount, DHCPCount, POPCount, MISCCount):
+    try:
+        con = lite.connect("main.db")
+        
+        query = "INSERT INTO traffic (HTTPCount, FTPCount, SSHCount, SSDPCount, SMTPCount, DHCPCount, POPCount, MISCCount)"
+        query += "VALUES ('"
+        query += str(HTTPCount)
+        query += "','"
+        query += str(FTPCount)
+        query += "','"
+        query += str(SSHCount)
+        query += "','"
+        query += str(SSDPCount)
+        query += "','"
+        query += str(SMTPCount)
+        query += "','"
+        query += str(DHCPCount)
+        query += "','"
+        query += str(POPCount)
+        query += "','"
+        query += str(MISCCount)
+        qeury += "');"
+        
+        con.execute(query)
         
         con.commit()
         
