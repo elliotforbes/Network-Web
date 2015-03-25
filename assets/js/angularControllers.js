@@ -70,6 +70,9 @@ app.controller("trafficController", function($scope, $http, $timeout){
             .error(function(data, status, header, config){
                console.log(alert, status, header, config); 
             });
+            
+            console.log($scope.traffic);
+            poll();
         }, 1000);
     }
     poll();
@@ -91,19 +94,19 @@ app.controller("latencyController", function($scope, $http, $timeout){
     poll();
 });
 
-var trafficService = angular.module('myApp.services', []);
-services.factory('dataService', function() {
-    function DataService(){
-        var data = [];
-        
-        this.loadData = function(callback) {
-            // TODO  
-        };
-    } 
-    
-    return new DataService();
-    
-});
+//var trafficService = angular.module('myApp.services', []);
+//services.factory('dataService', function() {
+//    function DataService(){
+//        var data = [];
+//        
+//        this.loadData = function(callback) {
+//            // TODO  
+//        };
+//    } 
+//    
+//    return new DataService();
+//    
+//});
 
 
 
