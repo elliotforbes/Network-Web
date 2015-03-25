@@ -108,7 +108,7 @@ def insertTraffic(HTTPCount, FTPCount, SSHCount, SSDPCount, SMTPCount, DHCPCount
         query += str(POPCount)
         query += "','"
         query += str(MISCCount)
-        qeury += "');"
+        query += "');"
         
         con.execute(query)
         
