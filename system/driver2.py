@@ -114,7 +114,7 @@ class Driver():
             control.testClient(self.connected_IP, self.listenThread.getPortNumber())
             self.connected_IP = None
         elif controlVar == 12:
-            control.testLatency2(self.connected_IP, self.listenThread.getPortNumber())
+            control.testLatency(self.connected_IP, self.listenThread.getPortNumber())
             self.connected_IP = None
         elif controlVar == 13:
             self.sniffThread.printAll()
