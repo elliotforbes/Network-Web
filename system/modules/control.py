@@ -5,6 +5,7 @@ import commands
 import time
 import socket
 from modules import sqlEngine as sql
+import subprocess
 
 dPis = []
 speedTest = False
@@ -99,6 +100,16 @@ def listDiscoveredPis(dPis, IP_ADDRESS):
             print(pi)
 
             
+def testLatency2(host):
+    response = os.system("ping -c 1 " + host)
+    # and then check the response...
+    if response == 0:
+        pingstatus = "Network Active"
+    else:
+        pingstatus = "Network Error"
+
+    return pingstatus
+            
 def testLatency(host, port):
     print("Latency Test Started...")
     count = 1
@@ -182,7 +193,7 @@ def listAllNetworkMachines():
     print(commands.getstatusoutput('wc -l file'))
 
 def sendPortNumber(socket, sockPort):
-    for i in range(100):
+    for i in range(10):
         CON_REQUEST = ('PiInfo\r\n' +
                  'PORTNO: [%s]\r\n' % (sockPort) + 
                  'CON_REQUEST: 1\r\n' +
