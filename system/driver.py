@@ -59,18 +59,18 @@ class Driver():
         self.listenThread = listen.listen(self.SSDP_SOCK, self.dPis, self.isConnected, self.IP_ADDRESS)
         self.advertiseThread = advertise.advertise(self.TCP_SOCK, self.SSDP_REQUEST)
         self.leaseThread = manageLeases.manageLeases(self.dPis)
-#        self.testThread = testEngine.testEngine(self.connected_IP, self.isConnected)
+        self.testThread = testEngine.testEngine(self.connected_IP, self.isConnected)
         self.sniffThread = trafficAnalyser.trafficAnalyser()
-#        self.alertThread = alert.alertEngine()
+        self.alertThread = alert.alertEngine()
 #        self.controlThread = control.control(self.dPis, self.speedTest)
     
     def runThreads(self):
         self.listenThread.start()
         self.advertiseThread.start()
         self.leaseThread.start()
-#        self.testThread.start()
+        self.testThread.start()
         self.sniffThread.start()
-#        self.alertThread.start()
+        self.alertThread.start()
 #        self.controlThread.start()
         
     def run(self):
