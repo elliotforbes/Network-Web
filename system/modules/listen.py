@@ -51,7 +51,7 @@ class listen(threading.Thread):
             else:
                 if self.IP_ADDRESS in results[0]:
 #                    print(self.IP_ADDRESS)
-#                    print(results[0])
+                    print(results[0])
                     print("Control Message Received")
                     self.connect_IP = results[0]
                     self.isConnected = True
