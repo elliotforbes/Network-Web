@@ -70,7 +70,7 @@ class Driver():
         self.leaseThread.start()
         self.testThread.start()
         self.sniffThread.start()
-        self.alertThread.start()
+#        self.alertThread.start()
 #        self.controlThread.start()
         
     def run(self):
